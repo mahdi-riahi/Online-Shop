@@ -9,3 +9,10 @@ class SignUpView(CreateView):
     template_name = 'registration/signup.html'
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('home')
+
+# def signup_view(request):
+#     form = CustomUserCreationForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('home')
+#     return render(request, 'registration/signup.html', {'form':form})
