@@ -11,6 +11,8 @@ class CustomUserAdmin(UserAdmin):
     # fieldsets = UserAdmin.fieldsets
     add_form = CustomUserCreationForm
     # add_fieldsets = None
+    # ordering = ()
+    # list_display = ()
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
