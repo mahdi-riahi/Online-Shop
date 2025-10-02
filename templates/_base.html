@@ -11,13 +11,15 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+
+{% if user.is_authenticated %}
+    Welcome {{ user.username }} | <a href="{% url 'account_logout' %}">Log out</a>
+{% else %}
+    <a href="{% url 'account_login' %}">Log in</a> | <a href="{% url 'account_signup' %}">Sign up</a>
+{% endif %}
+
 {% block content %}
 {% endblock %}
-{% if user.is_authenticated %}
-    You are logged in
-{% else %}
-    You are not logged in
-{% endif %}
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
