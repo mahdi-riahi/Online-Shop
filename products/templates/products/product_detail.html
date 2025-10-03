@@ -1,9 +1,10 @@
 {% extends '_base.html' %}
+{% load product_tags %}
 {% block title %}محصول {{ product.title|title }}{% endblock %}
 {% block content %}
     <h1>{{ product.title|title }}</h1>
-    <h4>{{ product.price }}تومان</h4>
+    <h4>تومان{{ product.price|toman }}</h4>
     -----------------------------
-    <p>{{ product.description|linebreaksbr }}</p>
+    <p>{{ product.description|capitalize_sentences|linebreaksbr }}</p>
 
 {% endblock %}
