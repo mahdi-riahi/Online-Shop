@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+{% block title %}Products{% endblock %}
+{% block content %}
+{% for product in products %}
+    <a href="{{ product.get_absolute_url }}">
+    <h3>{{ product.title }}</h3>
+    </a>
+    <h4>{{ product.price }}تومان</h4>
+    ----------------------------------
+{% endfor %}
+
+{% endblock %}
