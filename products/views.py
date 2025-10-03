@@ -8,7 +8,7 @@ class ProductListView(generic.ListView):
     queryset = Product.objects.filter(active=True).order_by('-datetime_modified')
     template_name = 'products/product_list.html'
     context_object_name = 'products'
-    paginate_by = 10
+    paginate_by = 6
 
     # def get_queryset(self):
     #     return Product.objects.filter(active=True).order_by('-datetime_modified')

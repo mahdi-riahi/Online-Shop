@@ -5,5 +5,5 @@ from .models import Product
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    ordering = ('price', )
-    list_display = ('title', 'price', 'active', )
+    ordering = ('-datetime_modified', '-price')
+    list_display = ('title', 'price', 'active', 'datetime_modified', )
