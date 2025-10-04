@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 
 from .forms import AuthenticatedCommentForm, AnonymousCommentForm
-from .models import Product
+from .models import Product, Comment
 
 
 class ProductListView(generic.ListView):
@@ -20,20 +20,39 @@ class ProductDetailView(generic.DetailView):
     template_name = 'products/product_detail.html'
     context_object_name = 'product'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = AuthenticatedCommentForm() if self.request.user.is_authenticated else AnonymousCommentForm()
+        return context
 
-def product_detail_view(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    form = AuthenticatedCommentForm(request.POST or None) if request.user.is_authenticated else AnonymousCommentForm(
-        request.POST or None)
-    if form.is_valid():
-        new_comment = form.save(commit=False)
-        new_comment.product = product
-        if request.user.is_authenticated:
-            new_comment.author = request.user.username
-            new_comment.author_email = request.user.email
-        new_comment.save()
-        return redirect('product_detail', pk)
-    return render(request, 'products/product_detail.html', context={
-        'product': product,
-        'form': form,
-    })
+# def product_detail_view(request, pk):
+#     product = get_object_or_404(Product, pk=pk)
+#     form = AuthenticatedCommentForm(request.POST or None) if request.user.is_authenticated else AnonymousCommentForm(
+#         request.POST or None)
+#     if form.is_valid():
+#         new_comment = form.save(commit=False)
+#         new_comment.product = product
+#         if request.user.is_authenticated:
+#             new_comment.author = request.user.username
+#             new_comment.author_email = request.user.email
+#         new_comment.save()
+#         return redirect('product_detail', pk)
+#     return render(request, 'products/product_detail.html', context={
+#         'product': product,
+#         'form': form,
+#     })
+
+
+class CommentCreateView(generic.CreateView):
+    model = Comment
+
+    def get_form_class(self):
+        return AuthenticatedCommentForm if self.request.user.is_authenticated else AnonymousCommentForm
+
+    def form_valid(self, form):
+        comment_form = form.save(commit=False)
+        # comment_form.product = self
+        if self.request.user.is_authenticated:
+            comment_form.author = self.request.user.username
+            comment_form.author_email = self.request.user.email
+

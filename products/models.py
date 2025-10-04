@@ -37,12 +37,12 @@ class Comment(models.Model):
         (True, 'این محصول را پیشنهاد می کنم'),
         (True, 'این محصول را پیشنهاد نمی کنم'),
     )
-    text = models.TextField()
-    author = models.CharField(max_length=100)
-    author_email = models.EmailField(blank=False)
+    text = models.TextField(verbose_name='متن نظر شما')
+    author = models.CharField(max_length=100, verbose_name='نام')
+    author_email = models.EmailField(blank=False, verbose_name='ایمیل')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
-    stars = models.PositiveIntegerField(choices=STARS, blank=False)
-    recommendation = models.BooleanField(default=True, choices=RECOMMENDATIONS)
+    stars = models.PositiveIntegerField(choices=STARS, blank=False, verbose_name='امتیاز')
+    recommendation = models.BooleanField(default=True, choices=RECOMMENDATIONS, verbose_name='پیشنهاد به دیگران')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)

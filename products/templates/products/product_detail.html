@@ -125,18 +125,19 @@
                                                     <div class="review__container">
                                                         <div class="review__text">
                                                             <div class="d-flex flex-sm-row flex-row">
-                                                                <img src="{% static 'assets/img/others/comment-1.jpg' %}" alt="">
+                                                                <img src="{% static 'assets/img/others/comment-1.jpg' %}" alt="avatar" class="review__avatar p-1 pt-7 mt-5">
                                                                 <div>
                                                                     <div class="review__meta">
-                                                                        <strong class="review__author px-4">
+                                                                        <strong class="review__author px-4" style="float: left">
                                                                             {{ comment.author }}
                                                                         </strong>
-                                                                        <span class="review__dash">-</span>
-                                                                        <span class="review__published-date">{{ comment.datetime_modified }}</span>
+                                                                        <span class="review__published-date" style="text-align: right">{{ comment.datetime_modified }}</span>
                                                                     </div>
-                                                                    <p style="font-size: 12px">{{ comment.get_stars_display }}</p>
+                                                                    <div class="pr-2 mr-1">
+                                                                        <p style="font-size: 11pt">{{ comment.get_stars_display }}</p>
+                                                                    </div>
                                                                     <div class="product-rating">
-                                                                        <div class="star-rating-display">
+                                                                        <div class="star-rating-display pr-2 mr-1">
                                                                             {% for i in "12345" %}
                                                                                 {% if i|add:0 <= comment.stars %}
                                                                                     <i class="bi bi-star-fill"></i>
@@ -145,7 +146,7 @@
                                                                                 {% endif %}
                                                                             {% endfor %}
                                                                         </div>
-                                                                        <p style="font-size: 12px">{{ comment.get_recommendation_display }}</p>
+                                                                        <div class="mr-3"><p style="font-size: 11px">{{ comment.get_recommendation_display }}</p></div>
                                                                     </div>
                                                                 </div>
                                                                 <p class="review__description text-right px-4">
