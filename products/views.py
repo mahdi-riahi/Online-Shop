@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 
+from .forms import AuthenticatedCommentForm, AnonymousCommentForm
 from .models import Product
 
 
@@ -18,3 +19,21 @@ class ProductDetailView(generic.DetailView):
     model = Product
     template_name = 'products/product_detail.html'
     context_object_name = 'product'
+
+
+def product_detail_view(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    form = AuthenticatedCommentForm(request.POST or None) if request.user.is_authenticated else AnonymousCommentForm(
+        request.POST or None)
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.product = product
+        if request.user.is_authenticated:
+            new_comment.author = request.user.username
+            new_comment.author_email = request.user.email
+        new_comment.save()
+        return redirect('product_detail', pk)
+    return render(request, 'products/product_detail.html', context={
+        'product': product,
+        'form': form,
+    })

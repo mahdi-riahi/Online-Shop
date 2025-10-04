@@ -30,7 +30,7 @@ class Comment(models.Model):
         (1, 'بی کیفیت'),
         (2, 'بد'),
         (3, 'متوسط'),
-        (4, 'خوب است'),
+        (4, 'خوب'),
         (5, 'عالی'),
     )
     RECOMMENDATIONS = (
@@ -41,7 +41,7 @@ class Comment(models.Model):
     author = models.CharField(max_length=100)
     author_email = models.EmailField(blank=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
-    stars = models.PositiveIntegerField(choices=STARS, blank=True)
+    stars = models.PositiveIntegerField(choices=STARS, blank=False)
     recommendation = models.BooleanField(default=True, choices=RECOMMENDATIONS)
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
