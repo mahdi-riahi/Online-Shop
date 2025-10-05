@@ -25,6 +25,11 @@ class Product(models.Model):
         return reverse('product_detail', args=[self.pk, ])
 
 
+class ActiveCommentManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveCommentManager, self).get_queryset().filter(active=True)
+
+
 class Comment(models.Model):
     STARS = (
         (1, 'بی کیفیت'),
@@ -46,6 +51,10 @@ class Comment(models.Model):
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
+
+    # manager
+    objects = models.Manager()
+    active_comment_manager = ActiveCommentManager()
 
     def __str__(self):
         return self.author
