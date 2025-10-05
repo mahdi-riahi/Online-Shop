@@ -3,10 +3,20 @@ from django.contrib import admin
 from .models import Product,Comment
 
 
+class CommentInline(admin.StackedInline):  # or TabularInline
+    model = Comment
+    fields = ['author', 'text', 'active', 'stars', 'recommendation', ]
+    extra = 5
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     ordering = ('-datetime_modified', '-price')
     list_display = ('title', 'price', 'active', 'datetime_modified', )
+    # inline
+    inlines = [
+        CommentInline,
+    ]
 
 
 class CommentAdmin(admin.ModelAdmin):
