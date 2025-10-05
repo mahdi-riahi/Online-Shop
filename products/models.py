@@ -35,7 +35,7 @@ class Comment(models.Model):
     )
     RECOMMENDATIONS = (
         (True, 'این محصول را پیشنهاد می کنم'),
-        (True, 'این محصول را پیشنهاد نمی کنم'),
+        (False, 'این محصول را پیشنهاد نمی کنم'),
     )
     text = models.TextField(verbose_name='متن نظر شما')
     author = models.CharField(max_length=100, verbose_name='نام')
@@ -49,3 +49,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.author
+
+    def get_absolute_url(self):
+        return reverse('product_detail', kwargs={'pk': self.product.pk, })

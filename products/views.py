@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 
 from .forms import AuthenticatedCommentForm, AnonymousCommentForm
@@ -50,9 +50,14 @@ class CommentCreateView(generic.CreateView):
         return AuthenticatedCommentForm if self.request.user.is_authenticated else AnonymousCommentForm
 
     def form_valid(self, form):
-        comment_form = form.save(commit=False)
-        # comment_form.product = self
+        obj = form.save(commit=False)
+        product = get_object_or_404(Product, pk=int(self.kwargs['pk']))
+        obj.product = product
         if self.request.user.is_authenticated:
-            comment_form.author = self.request.user.username
-            comment_form.author_email = self.request.user.email
+            obj.author = self.request.user.username
+            obj.author_email = self.request.user.email
+        obj.save()
+        return super().form_valid(form)
 
+    def get_success_url(self):
+        return reverse('product_detail', kwargs={'pk': self.kwargs['pk']})

@@ -162,7 +162,7 @@
                                                 <div class="col-lg-8 m-auto">
                                                     <span class="reply-title pull-right">نظر خود را بنویسید</span>
                                                     <br>
-                                                    <form action="" method="POST" class="form text-right" style="font-size: 20px">
+                                                    <form action="{% url 'comment_create' product.id %}" method="POST" class="form text-right" style="font-size: 20px">
                                                         {% csrf_token %}
                                                         {% if not user.is_authenticated %}
                                                             <div class="form-notes mb--20">
