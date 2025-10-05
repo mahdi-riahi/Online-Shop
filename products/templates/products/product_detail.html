@@ -2,6 +2,7 @@
 {% load product_tags %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block title %}محصول {{ product.title|title }}{% endblock %}
 {% block content %}
 
@@ -11,7 +12,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
-                        <h1 class="page-title">جزئیات محصول «{{ product.title }}»</h1>
+                        <h1 class="page-title">{% trans 'Details for ' %} «{{ product.title }}»</h1>
                     </div>
                 </div>
             </div>
@@ -36,9 +37,9 @@
                                 {{ product.description|truncatewords:40 }}
                             </p>
                             <div class="my-5 py-5 product-price-wrapper mb--25">
-                                <span class="money text-success">{{ product.price|toman }} تومان</span>
+                                <span class="money text-success">{{ product.price|toman }} {% translate '$' %}</span>
                                 <span class="price-separator">-</span>
-                                <span class="money old-price text-danger">{{ product.price|toman }} تومان</span>
+                                <span class="money old-price text-danger">{{ product.price|toman }} {% trans '$' %}</span>
                             </div>
                             <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
                                 <div class="quantity-wrapper d-flex justify-content-start">
@@ -49,11 +50,11 @@
                                 </div>
                                 <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
                                         onclick="window.location.href='cart.html'">
-                                    اضافه به سبد خرید
+                                    {% translate 'Add to Cart' %}
                                 </button>
                             </div>
                             <div class="product-footer-meta mt-5 pt-5">
-                                <p><span class="m-0">دسته بندی ها:</span>
+                                <p><span class="m-0">{% trans 'Categories' %}:</span>
                                     <a href="shop.html">لباس</a>,
                                     <a href="shop.html">تابستانی</a>,
                                     <a href="shop.html">گرم</a>,
@@ -69,7 +70,7 @@
                             <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
                                 <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab"
                                    data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
-                                    <span>توضیحات محصول</span>
+                                    <span>{% translate 'Product description' %}</span>
                                 </a>
                                 <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
                                    href="#nav-info" role="tab" aria-selected="true">
@@ -77,7 +78,7 @@
                                 </a>
                                 <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab" data-toggle="tab"
                                    href="#nav-reviews" role="tab" aria-selected="true">
-                                    <span>نظرات ({{ product.comments.count }})</span>
+                                    <span>{% translate 'Comments' %} ({{ product.comments.count }})</span>
                                 </a>
                             </div>
                             <div class="tab-content product-data-tab__content" id="product-tabContent">
@@ -117,7 +118,7 @@
                                      aria-labelledby="nav-reviews-tab">
                                     <div class="product-reviews">
                                         <h3 class="review__title">{{ product.comments.count }}
-                                            نظر برای {{ product.title|truncatewords:2 }}
+                                            {% trans 'Comments for' %} {{ product.title|truncatewords:2 }}
                                         </h3>
                                         <ul class="review__list">
                                             {% for comment in product.comments.all %}
@@ -160,21 +161,21 @@
                                         <div class="review-form-wrapper">
                                             <div class="row">
                                                 <div class="col-lg-8 m-auto">
-                                                    <span class="reply-title pull-right">نظر خود را بنویسید</span>
+                                                    <span class="reply-title pull-right">{% trans 'Write your own comment' %}</span>
                                                     <br>
                                                     <form action="{% url 'comment_create' product.id %}" method="POST" class="form text-right" style="font-size: 20px">
                                                         {% csrf_token %}
                                                         {% if not user.is_authenticated %}
                                                             <div class="form-notes mb--20">
-                                                                <p class="my-3"><span class="required">*</span>ایمیل شما
-                                                                    برای دیگران نشان داده نمیشود.</p>
+                                                                <p class="my-3"><span class="required">*</span>
+                                                                    {% trans 'Your email will not be shown to others' %}</p>
                                                             </div>
                                                         {% endif %}
                                                         {{ form|crispy }}
                                                         <div class="form__group">
                                                             <div class="form-row">
                                                                 <div class="col-12">
-                                                                    <input type="submit" value="ارسال"
+                                                                    <input type="submit" value="{% translate 'Submit' %}"
                                                                            class="btn-submit">
                                                                 </div>
                                                             </div>
@@ -191,6 +192,6 @@
                 </div>
             </div>
         </div>
+    </div>
         <!-- Main Content Wrapper End -->
-
 {% endblock %}
