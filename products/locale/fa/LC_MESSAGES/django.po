@@ -8,15 +8,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-05 23:11+0330\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2025-10-06 21:46+0330\n"
+"PO-Revision-Date: 2025-10-06 22:04+0330\n"
+"Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\models.py:12
+msgid "Title"
+msgstr "عنوان محصول"
+
+#: .\models.py:13
+msgid "Description"
+msgstr "توضیحات محصول"
+
+#: .\models.py:14
+msgid "Price"
+msgstr "بهای محصول"
+
+#: .\models.py:15
+msgid "Is Active?"
+msgstr "آیا این محصول فعال است؟"
 
 #: .\models.py:36
 msgid "Very Bad"
@@ -66,43 +83,63 @@ msgstr "امتیاز"
 msgid "Do you suggest it to the others?"
 msgstr "آیا به دیگران پیشنهاد می دهید؟"
 
-#: .\templates\products\product_detail.html:15
+#: .\templates\products\product_detail.html:16
 msgid "Details for "
 msgstr "جزییات محصول "
 
-#: .\templates\products\product_detail.html:40
-#: .\templates\products\product_detail.html:42
+#: .\templates\products\product_detail.html:41
+#: .\templates\products\product_detail.html:43
 msgid "$"
 msgstr "تومان"
 
-#: .\templates\products\product_detail.html:53
+#: .\templates\products\product_detail.html:54
 msgid "Add to Cart"
 msgstr "اضافه کردن به سبد خرید"
 
-#: .\templates\products\product_detail.html:57
+#: .\templates\products\product_detail.html:58
 msgid "Categories"
 msgstr "دسته بندی ها"
 
-#: .\templates\products\product_detail.html:73
+#: .\templates\products\product_detail.html:74
 msgid "Product description"
 msgstr "توضیحات محصول"
 
-#: .\templates\products\product_detail.html:81
+#: .\templates\products\product_detail.html:82
 msgid "Comments"
 msgstr "نظرات"
 
-#: .\templates\products\product_detail.html:121
+#: .\templates\products\product_detail.html:122
 msgid "Comments for"
 msgstr "نظرات"
 
-#: .\templates\products\product_detail.html:164
+#: .\templates\products\product_detail.html:165
 msgid "Write your own comment"
 msgstr "نظر خود را بنویسید"
 
-#: .\templates\products\product_detail.html:171
+#: .\templates\products\product_detail.html:172
 msgid "Your email will not be shown to others"
 msgstr "ایمیل شما به دیگران نشان داده نمی شود"
 
-#: .\templates\products\product_detail.html:178
+#: .\templates\products\product_detail.html:179
 msgid "Submit"
 msgstr "ارسال"
+
+#: .\views.py:54
+msgid "Comment Added successfully"
+msgstr "دیدگاه شما با موفقیت اضافه شد!"
+
+#: .\views.py:75
+msgid "This is a success message"
+msgstr "این یک پیام موفقیت آمیز است"
+
+#: .\views.py:76
+msgid "This is an error message"
+msgstr "این یک پیام خطا است"
+
+#: .\views.py:77
+msgid "Info"
+msgstr "اطلاع"
+
+#: .\views.py:78
+msgid "Warning"
+msgstr "هشدار"

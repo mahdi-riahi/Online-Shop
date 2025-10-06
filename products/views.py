@@ -1,4 +1,9 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from datetime import datetime
+
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import get_object_or_404, reverse, render
+from django.utils.translation import gettext_lazy as _
 from django.views import generic
 
 from .forms import AuthenticatedCommentForm, AnonymousCommentForm
@@ -43,8 +48,9 @@ class ProductDetailView(generic.DetailView):
 #     })
 
 
-class CommentCreateView(generic.CreateView):
+class CommentCreateView(SuccessMessageMixin, generic.CreateView):
     model = Comment
+    success_message = _('Comment Added successfully')
 
     def get_form_class(self):
         return AuthenticatedCommentForm if self.request.user.is_authenticated else AnonymousCommentForm
@@ -61,3 +67,12 @@ class CommentCreateView(generic.CreateView):
 
     def get_success_url(self):
         return reverse('product_detail', kwargs={'pk': self.kwargs['pk']})
+
+
+def test_view(request):
+    dt = _(datetime.now().strftime('Today: %m-%d-%Y , Time: %H:%M:%S'))
+    messages.success(request, _('This is a success message'))
+    messages.error(request, _('This is an error message'))
+    messages.info(request, _('Info'))
+    messages.warning(request, _('Warning'))
+    return render(request, 'test.html', {'dt': dt})

@@ -9,10 +9,10 @@ class Product(models.Model):
     #     ('SM', 'Smart Phones'),
     #     ('ED', 'Electronic Devices'),
     # )
-    title = models.CharField(max_length=200, null=False, blank=False, unique=True)
-    description = models.TextField()
-    price = models.PositiveIntegerField(default=0)
-    active = models.BooleanField(default=True)
+    title = models.CharField(max_length=200, null=False, blank=False, unique=True, verbose_name=_('Title'), )
+    description = models.TextField(verbose_name=_('Description'), )
+    price = models.PositiveIntegerField(default=0, verbose_name=_('Price'), )
+    active = models.BooleanField(default=True, verbose_name=_('Is Active?'), )
     # category = models.CharField(choices=CATEGORIES, null=False, blank=True, max_length=2)
     # cover = models.ImageField(upload_to=)
     # storage = models.PositiveIntegerField()

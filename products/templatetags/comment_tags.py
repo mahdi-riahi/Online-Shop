@@ -6,4 +6,4 @@ register = template.Library()
 
 @register.filter
 def active_comments(comments):
-    return comments.exclude(active=True)
+    return comments.exclude(active=False)
