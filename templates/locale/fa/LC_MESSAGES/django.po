@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-06 19:39+0330\n"
+"PO-Revision-Date: 2025-10-06 19:45+0330\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\account\email\email_confirmation_message.txt:5
+#, python-format
+msgid ""
+"\n"
+"\n"
+"You're receiving this email because user %(user_display)s has given your email address to register an account on %(site_domain)s."
+msgstr ""
+
+#: .\account\email\email_confirmation_subject.txt:3
+msgid "Please Confirm Your Email Address"
+msgstr ""
+
+#: .\account\email_confirm.html:7 .\account\email_confirm.html:11
+msgid "Confirm Email Address"
+msgstr ""
+
+#: .\account\email_confirm.html:17
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an email "
+"address for user %(user_display)s."
+msgstr ""
+
+#: .\account\email_confirm.html:25
+msgid "Confirm"
+msgstr ""
+
+#: .\account\email_confirm.html:31
+#, python-format
+msgid ""
+"Unable to confirm %(email)s because it is already confirmed by a different "
+"account."
+msgstr ""
+
+#: .\account\email_confirm.html:37
+#, python-format
+msgid ""
+"This email confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new email confirmation request</a>."
+msgstr ""
+
+#: .\home_page.html:5
+msgid ""
+"\n"
+"        <h1>This is home page. </h1>\n"
+"        <h4>Welcome</h4>\n"
+"    "
+msgstr ""
+"\n"
+"<h1> اینجا خانه است! </h1>"

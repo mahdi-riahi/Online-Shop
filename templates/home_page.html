@@ -1,5 +1,9 @@
 {% extends '_base.html' %}
+{% load i18n %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <h1>This is home page</h1>
+    {% blocktrans %}
+        <h1>This is home page. </h1>
+        <h4>Welcome</h4>
+    {% endblocktrans %}
 {% endblock %}
