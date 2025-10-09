@@ -44,15 +44,20 @@
                             </div>
                             <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
                                 <div class="quantity-wrapper d-flex justify-content-start">
-                                    <div class="quantity">
-                                        <input type="number" class="quantity-input" name="qty" id="qty" value="1"
-                                               min="1">
-                                    </div>
+                                <form action="{% url 'cart:cart_add' product.pk %}" method="POST">
+                                    {% csrf_token %}
+                                    {{ add_to_cart_form|crispy }}
+                                    <button class="btn btn-small btn-bg-red btn-color-white btn-hover-2" type="submit">Add to Cart</button>
+                                </form>
                                 </div>
-                                <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
-                                        onclick="window.location.href='cart.html'">
-                                    {% translate 'Add to Cart' %}
-                                </button>
+{#                                    <div class="quantity">#}
+{#                                        <input type="number" class="quantity-input" name="qty" id="qty" value="1"#}
+{#                                               min="1">#}
+{#                                    </div>#}
+{#                                <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"#}
+{#                                        onclick="window.location.href='cart.html'">#}
+{#                                    {% translate 'Add to Cart' %}#}
+{#                                </button>#}
                             </div>
                             <div class="product-footer-meta mt-5 pt-5">
                                 <p><span class="m-0">{% trans 'Categories' %}:</span>
@@ -127,13 +132,16 @@
                                                     <div class="review__container">
                                                         <div class="review__text">
                                                             <div class="d-flex flex-sm-row flex-row">
-                                                                <img src="{% static 'assets/img/others/comment-1.jpg' %}" alt="avatar" class="review__avatar p-1 pt-7 mt-5">
+                                                                <img src="{% static 'assets/img/others/comment-1.jpg' %}"
+                                                                     alt="avatar" class="review__avatar p-1 pt-7 mt-5">
                                                                 <div>
                                                                     <div class="review__meta">
-                                                                        <strong class="review__author px-4" style="float: left">
+                                                                        <strong class="review__author px-4"
+                                                                                style="float: left">
                                                                             {{ comment.author }}
                                                                         </strong>
-                                                                        <span class="review__published-date" style="text-align: right">{{ comment.datetime_modified }}</span>
+                                                                        <span class="review__published-date"
+                                                                              style="text-align: right">{{ comment.datetime_modified }}</span>
                                                                     </div>
                                                                     <div class="pr-2 mr-1">
                                                                         <p style="font-size: 11pt">{{ comment.get_stars_display }}</p>
@@ -148,7 +156,9 @@
                                                                                 {% endif %}
                                                                             {% endfor %}
                                                                         </div>
-                                                                        <div class="mr-3"><p style="font-size: 11px">{{ comment.get_recommendation_display }}</p></div>
+                                                                        <div class="mr-3"><p
+                                                                                style="font-size: 11px">{{ comment.get_recommendation_display }}</p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <p class="review__description text-right px-4">
@@ -164,19 +174,22 @@
                                                 <div class="col-lg-8 m-auto">
                                                     <span class="reply-title pull-right">{% trans 'Write your own comment' %}</span>
                                                     <br>
-                                                    <form action="{% url 'comment_create' product.id %}" method="POST" class="form text-right" style="font-size: 20px">
+                                                    <form action="{% url 'comment_create' product.id %}" method="POST"
+                                                          class="form text-right" style="font-size: 20px">
                                                         {% csrf_token %}
                                                         {% if not user.is_authenticated %}
                                                             <div class="form-notes mb--20">
                                                                 <p class="my-3"><span class="required">*</span>
-                                                                    {% trans 'Your email will not be shown to others' %}</p>
+                                                                    {% trans 'Your email will not be shown to others' %}
+                                                                </p>
                                                             </div>
                                                         {% endif %}
                                                         {{ form|crispy }}
                                                         <div class="form__group">
                                                             <div class="form-row">
                                                                 <div class="col-12">
-                                                                    <input type="submit" value="{% translate 'Submit' %}"
+                                                                    <input type="submit"
+                                                                           value="{% translate 'Submit' %}"
                                                                            class="btn-submit">
                                                                 </div>
                                                             </div>
@@ -194,5 +207,5 @@
             </div>
         </div>
     </div>
-        <!-- Main Content Wrapper End -->
+    <!-- Main Content Wrapper End -->
 {% endblock %}

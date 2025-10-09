@@ -14,7 +14,7 @@ class Cart:
 
         self.cart = cart
 
-    def add(self, product, quantity=1, replace=False):
+    def add(self, product, quantity=1, override=False):
         """
         Add product to the cart if existed
         if replace equals 'True' the amount of given quantity will be replaced instead of self.cart[product_id]['quantity']
@@ -24,7 +24,7 @@ class Cart:
         if product_id not in self.cart:
             self.cart[product_id] = {'quantity': quantity}
         else:
-            if replace:
+            if override:
                 self.cart[product_id]['quantity'] = quantity
             else:
                 self.cart[product_id]['quantity'] += quantity
@@ -38,8 +38,7 @@ class Cart:
         product_id = str(product.id)
         if product_id in self.cart:
             del self.cart[product_id]
-
-        self.save()
+            self.save()
 
     def save(self):
         """
@@ -48,9 +47,7 @@ class Cart:
         self.session.modified = True
 
     def __iter__(self):
-        product_ids = self.cart.keys()
-        products = Product.objects.filter(id__in=product_ids)
-
+        products = self.get_product_objects()
         cart = self.cart.copy()
 
         for product in products:
@@ -67,6 +64,9 @@ class Cart:
         self.save()
 
     def get_total_price(self):
-        product_ids = self.cart.keys()
-        products = Product.objects.filter(id__in=product_ids)
+        products = self.get_product_objects()
         return sum(product.price for product in products)
+
+    def get_product_objects(self):
+        product_ids = self.cart.keys()
+        return Product.objects.filter(id__in=product_ids)
