@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-06 21:46+0330\n"
-"PO-Revision-Date: 2025-10-06 22:04+0330\n"
+"PO-Revision-Date: 2025-10-10 15:07+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -110,7 +110,7 @@ msgstr "نظرات"
 
 #: .\templates\products\product_detail.html:122
 msgid "Comments for"
-msgstr "نظرات"
+msgstr "نظر برای"
 
 #: .\templates\products\product_detail.html:165
 msgid "Write your own comment"

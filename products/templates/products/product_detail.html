@@ -7,19 +7,10 @@
 {% block title %}محصول {{ product.title|title }}{% endblock %}
 {% block content %}
 
-    <!-- Breadcrumb area Start -->
-    <div class="breadcrumb-area bg-color ptb--90" data-bg-color="#f6f6f6">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
-                        <h1 class="page-title">{% trans 'Details for ' %} «{{ product.title }}»</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb area End -->
+    {% trans 'Details for ' as pre_header %}
+    {% with product.title as header %}
+    {% include 'cart/header.html' with header_name=header pre_header=pre_header %}
+    {% endwith %}
 
     <!-- Main Content Wrapper Start -->
     <div class="main-content-wrapper">
@@ -43,159 +34,155 @@
                                 <span class="money old-price text-danger">{{ product.price|toman }} {% trans '$' %}</span>
                             </div>
                             <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
-                                <div class="quantity-wrapper d-flex justify-content-start">
                                 <form action="{% url 'cart:cart_add' product.pk %}" method="POST">
                                     {% csrf_token %}
-                                    {{ add_to_cart_form|crispy }}
-                                    <button class="btn btn-small btn-bg-red btn-color-white btn-hover-2" type="submit">Add to Cart</button>
+                                    <div class="quantity-wrapper d-flex justify-content-start">
+                                        <div class="quantity">
+                                            <input type="number" name="quantity" id="qty" value="1" min="1" max="50"
+                                                   class="quantity-input">
+                                        </div>
+                                        {#                                    {{ add_to_cart_form|crispy }}#}
+                                        <button class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
+                                                type="submit">{% trans 'Add to Cart' %}</button>
                                 </form>
-                                </div>
-{#                                    <div class="quantity">#}
-{#                                        <input type="number" class="quantity-input" name="qty" id="qty" value="1"#}
-{#                                               min="1">#}
-{#                                    </div>#}
-{#                                <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"#}
-{#                                        onclick="window.location.href='cart.html'">#}
-{#                                    {% translate 'Add to Cart' %}#}
-{#                                </button>#}
                             </div>
-                            <div class="product-footer-meta mt-5 pt-5">
-                                <p><span class="m-0">{% trans 'Categories' %}:</span>
-                                    <a href="shop.html">لباس</a>,
-                                    <a href="shop.html">تابستانی</a>,
-                                    <a href="shop.html">گرم</a>,
-                                    <a href="shop.html">زنانه</a>
-                                </p>
-                            </div>
+                        </div>
+                        <div class="product-footer-meta mt-5 pt-5">
+                            <p><span class="m-0">{% trans 'Categories' %}:</span>
+                                <a href="shop.html">لباس</a>,
+                                <a href="shop.html">تابستانی</a>,
+                                <a href="shop.html">گرم</a>,
+                                <a href="shop.html">زنانه</a>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="product-data-tab tab-style-3">
-                            <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
-                                <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab"
-                                   data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
-                                    <span>{% translate 'Product description' %}</span>
-                                </a>
-                                <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
-                                   href="#nav-info" role="tab" aria-selected="true">
-                                    <span>ویژگی ها</span>
-                                </a>
-                                <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab" data-toggle="tab"
-                                   href="#nav-reviews" role="tab" aria-selected="true">
-                                    <span>{% translate 'Comments' %} ({{ product.comments.all|active_comments|length }})</span>
-                                </a>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="product-data-tab tab-style-3">
+                        <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
+                            <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab"
+                               data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
+                                <span>{% translate 'Product description' %}</span>
+                            </a>
+                            <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
+                               href="#nav-info" role="tab" aria-selected="true">
+                                <span>ویژگی ها</span>
+                            </a>
+                            <a class="m-0 product-data-tab__link nav-link" id="nav-reviews-tab" data-toggle="tab"
+                               href="#nav-reviews" role="tab" aria-selected="true">
+                                <span>{% translate 'Comments' %} ({{ product.comments.all|active_comments|length }})</span>
+                            </a>
+                        </div>
+                        <div class="tab-content product-data-tab__content" id="product-tabContent">
+                            <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                                 aria-labelledby="nav-description-tab">
+                                <div class="product-description text-justify">
+                                    <p>{{ product.description|linebreaksbr }}</p>
+                                </div>
                             </div>
-                            <div class="tab-content product-data-tab__content" id="product-tabContent">
-                                <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
-                                     aria-labelledby="nav-description-tab">
-                                    <div class="product-description text-justify">
-                                        <p>{{ product.description|linebreaksbr }}</p>
-                                    </div>
+                            <div class="tab-pane text-right" id="nav-info" role="tabpanel"
+                                 aria-labelledby="nav-info-tab">
+                                <div class="table-content table-responsive">
+                                    <table class="table shop_attributes">
+                                        <tbody>
+                                        <tr>
+                                            <th>وزن</th>
+                                            <td>۴۳۰ گرم</td>
+                                        </tr>
+                                        <tr>
+                                            <th>سایز</th>
+                                            <td>XL</td>
+                                        </tr>
+                                        <tr>
+                                            <th>رنگ</th>
+                                            <td>
+                                                <a href="shop-sidebar.html">مشکی</a>,
+                                                <a href="shop-sidebar.html">سبز</a>,
+                                                <a href="shop-sidebar.html">قرمز</a>,
+                                                <a href="shop-sidebar.html">نارنجی</a>,
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="tab-pane text-right" id="nav-info" role="tabpanel"
-                                     aria-labelledby="nav-info-tab">
-                                    <div class="table-content table-responsive">
-                                        <table class="table shop_attributes">
-                                            <tbody>
-                                            <tr>
-                                                <th>وزن</th>
-                                                <td>۴۳۰ گرم</td>
-                                            </tr>
-                                            <tr>
-                                                <th>سایز</th>
-                                                <td>XL</td>
-                                            </tr>
-                                            <tr>
-                                                <th>رنگ</th>
-                                                <td>
-                                                    <a href="shop-sidebar.html">مشکی</a>,
-                                                    <a href="shop-sidebar.html">سبز</a>,
-                                                    <a href="shop-sidebar.html">قرمز</a>,
-                                                    <a href="shop-sidebar.html">نارنجی</a>,
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
-                                     aria-labelledby="nav-reviews-tab">
-                                    <div class="product-reviews">
-                                        <h3 class="review__title">{{ product.comments.all|active_comments|length }}
-                                            {% trans 'Comments for' %} {{ product.title|truncatewords:2 }}
-                                        </h3>
-                                        <ul class="review__list">
-                                            {% for comment in product.comments.all|active_comments %}
-                                                <li class="review__item">
-                                                    <div class="review__container">
-                                                        <div class="review__text">
-                                                            <div class="d-flex flex-sm-row flex-row">
-                                                                <img src="{% static 'assets/img/others/comment-1.jpg' %}"
-                                                                     alt="avatar" class="review__avatar p-1 pt-7 mt-5">
-                                                                <div>
-                                                                    <div class="review__meta">
-                                                                        <strong class="review__author px-4"
-                                                                                style="float: left">
-                                                                            {{ comment.author }}
-                                                                        </strong>
-                                                                        <span class="review__published-date"
-                                                                              style="text-align: right">{{ comment.datetime_modified }}</span>
+                            </div>
+                            <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
+                                 aria-labelledby="nav-reviews-tab">
+                                <div class="product-reviews">
+                                    <h3 class="review__title">{{ product.comments.all|active_comments|length }}
+                                        {% trans 'Comments for' %} {{ product.title|truncatewords:2 }}
+                                    </h3>
+                                    <ul class="review__list">
+                                        {% for comment in product.comments.all|active_comments %}
+                                            <li class="review__item">
+                                                <div class="review__container">
+                                                    <div class="review__text">
+                                                        <div class="d-flex flex-sm-row flex-row">
+                                                            <img src="{% static 'assets/img/others/comment-1.jpg' %}"
+                                                                 alt="avatar" class="review__avatar p-1 pt-7 mt-5">
+                                                            <div>
+                                                                <div class="review__meta">
+                                                                    <strong class="review__author px-4"
+                                                                            style="float: left">
+                                                                        {{ comment.author }}
+                                                                    </strong>
+                                                                    <span class="review__published-date"
+                                                                          style="text-align: right">{{ comment.datetime_modified }}</span>
+                                                                </div>
+                                                                <div class="pr-2 mr-1">
+                                                                    <p style="font-size: 11pt">{{ comment.get_stars_display }}</p>
+                                                                </div>
+                                                                <div class="product-rating">
+                                                                    <div class="star-rating-display pr-2 mr-1">
+                                                                        {% for i in "12345" %}
+                                                                            {% if i|add:0 <= comment.stars %}
+                                                                                <i class="bi bi-star-fill"></i>
+                                                                            {% else %}
+                                                                                <i class="bi bi-star"></i>
+                                                                            {% endif %}
+                                                                        {% endfor %}
                                                                     </div>
-                                                                    <div class="pr-2 mr-1">
-                                                                        <p style="font-size: 11pt">{{ comment.get_stars_display }}</p>
-                                                                    </div>
-                                                                    <div class="product-rating">
-                                                                        <div class="star-rating-display pr-2 mr-1">
-                                                                            {% for i in "12345" %}
-                                                                                {% if i|add:0 <= comment.stars %}
-                                                                                    <i class="bi bi-star-fill"></i>
-                                                                                {% else %}
-                                                                                    <i class="bi bi-star"></i>
-                                                                                {% endif %}
-                                                                            {% endfor %}
-                                                                        </div>
-                                                                        <div class="mr-3"><p
-                                                                                style="font-size: 11px">{{ comment.get_recommendation_display }}</p>
-                                                                        </div>
+                                                                    <div class="mr-3"><p
+                                                                            style="font-size: 11px">{{ comment.get_recommendation_display }}</p>
                                                                     </div>
                                                                 </div>
-                                                                <p class="review__description text-right px-4">
-                                                                    {{ comment.text|linebreaks }}
-                                                                </p>
+                                                            </div>
+                                                            <p class="review__description text-right px-4">
+                                                                {{ comment.text|linebreaks }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <div class="review-form-wrapper">
+                                        <div class="row">
+                                            <div class="col-lg-8 m-auto">
+                                                <span class="reply-title pull-right">{% trans 'Write your own comment' %}</span>
+                                                <br>
+                                                <form action="{% url 'comment_create' product.id %}" method="POST"
+                                                      class="form text-right" style="font-size: 20px">
+                                                    {% csrf_token %}
+                                                    {% if not user.is_authenticated %}
+                                                        <div class="form-notes mb--20">
+                                                            <p class="my-3"><span class="required">*</span>
+                                                                {% trans 'Your email will not be shown to others' %}
+                                                            </p>
+                                                        </div>
+                                                    {% endif %}
+                                                    {{ form|crispy }}
+                                                    <div class="form__group">
+                                                        <div class="form-row">
+                                                            <div class="col-12">
+                                                                <input type="submit"
+                                                                       value="{% translate 'Submit' %}"
+                                                                       class="btn-submit">
                                                             </div>
                                                         </div>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                        <div class="review-form-wrapper">
-                                            <div class="row">
-                                                <div class="col-lg-8 m-auto">
-                                                    <span class="reply-title pull-right">{% trans 'Write your own comment' %}</span>
-                                                    <br>
-                                                    <form action="{% url 'comment_create' product.id %}" method="POST"
-                                                          class="form text-right" style="font-size: 20px">
-                                                        {% csrf_token %}
-                                                        {% if not user.is_authenticated %}
-                                                            <div class="form-notes mb--20">
-                                                                <p class="my-3"><span class="required">*</span>
-                                                                    {% trans 'Your email will not be shown to others' %}
-                                                                </p>
-                                                            </div>
-                                                        {% endif %}
-                                                        {{ form|crispy }}
-                                                        <div class="form__group">
-                                                            <div class="form-row">
-                                                                <div class="col-12">
-                                                                    <input type="submit"
-                                                                           value="{% translate 'Submit' %}"
-                                                                           class="btn-submit">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -206,6 +193,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Main Content Wrapper End -->
 {% endblock %}

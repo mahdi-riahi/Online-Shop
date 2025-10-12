@@ -9,8 +9,6 @@ from django.views import generic
 from .forms import AuthenticatedCommentForm, AnonymousCommentForm
 from .models import Product, Comment
 
-from cart.forms import AddToCartForm
-
 
 class ProductListView(generic.ListView):
     queryset = Product.objects.filter(active=True).order_by('-datetime_modified')
@@ -30,7 +28,6 @@ class ProductDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = AuthenticatedCommentForm() if self.request.user.is_authenticated else AnonymousCommentForm()
-        context['add_to_cart_form'] = AddToCartForm()
         return context
 
 # def product_detail_view(request, pk):
