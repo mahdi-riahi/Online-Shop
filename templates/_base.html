@@ -212,7 +212,9 @@
                         <li class="mini-cart__product d-flex justify-content-between">
                             <div class="mini-cart__product__image">
                                 <a href="#">
-                                    <img src="{% static 'assets/img/products/prod-1-100x100.jpg' %}" alt="products">
+                                    <img src="{% if item.object.cover %}{{ item.object.cover.url }}
+                                         {% else %}{% static 'assets/img/products/prod-10-70x88.jpg' %}{% endif %}"
+                                         alt="products">
                                 </a>
                             </div>
                             <div class="mini-cart__product__content pt-2">

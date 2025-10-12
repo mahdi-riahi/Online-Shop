@@ -14,10 +14,10 @@ class Product(models.Model):
     price = models.PositiveIntegerField(default=0, verbose_name=_('Price'), )
     active = models.BooleanField(default=True, verbose_name=_('Is Active?'), )
     # category = models.CharField(choices=CATEGORIES, null=False, blank=True, max_length=2)
-    # cover = models.ImageField(upload_to=)
     # storage = models.PositiveIntegerField()
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
+    cover = models.ImageField(upload_to='product/covers/', blank=True, verbose_name=_('Product Cover'))
 
     def __str__(self):
         return self.title
