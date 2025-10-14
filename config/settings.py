@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rosetta',
+    'ckeditor',
 
     # my local apps
     "accounts",
@@ -178,6 +179,7 @@ CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
 # static files
 STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # media files
 MEDIA_URL = '/media/'

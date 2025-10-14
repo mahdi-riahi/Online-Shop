@@ -23,5 +23,8 @@ def number_farsi(value):
     # farsi_digits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹']
     # result = ''
     # for i in str_num:
-    #     result += farsi_digits[int(i)]
+    #     if i.isdigit():
+    #         result += farsi_digits[int(i)]
+    #     else:
+    #         result += i
     # return result

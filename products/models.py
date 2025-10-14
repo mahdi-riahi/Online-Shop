@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
+from ckeditor.fields import RichTextField
+
 
 class Product(models.Model):
     # CATEGORIES = (
@@ -11,7 +13,8 @@ class Product(models.Model):
     #     ('ED', 'Electronic Devices'),
     # )
     title = models.CharField(max_length=200, null=False, blank=False, unique=True, verbose_name=_('Title'), )
-    description = models.TextField(verbose_name=_('Description'), )
+    # short_description =
+    description = RichTextField()
     price = models.PositiveIntegerField(default=0, verbose_name=_('Price'), )
     active = models.BooleanField(default=True, verbose_name=_('Is Active?'), )
     # category = models.CharField(choices=CATEGORIES, null=False, blank=True, max_length=2)

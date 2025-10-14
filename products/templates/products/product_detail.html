@@ -92,7 +92,7 @@
 
                                 <!-- Product description -->
                                 <div class="product-description text-justify">
-                                    <p>{{ product.description|linebreaksbr }}</p>
+                                    <p>{{ product.description|safe|linebreaksbr }}</p>
                                 </div>
                             </div>
                             <div class="tab-pane text-right" id="nav-info" role="tabpanel"
