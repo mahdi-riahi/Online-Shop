@@ -2,7 +2,7 @@
 
 {% load i18n %}
 {% load static %}
-{% load cart_tags %}
+{% load farsi_tags %}
 {% load crispy_forms_tags %}
 
 {% block title %}{% translate 'Cart Detail' %}{% endblock %}
@@ -34,6 +34,8 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+
+                                                <!-- cart items -->
                                             {% for item in cart %}
                                                 <tr>
                                                     <td class="product-remove text-left">
@@ -57,7 +59,7 @@
                                                     </td>
                                                     <td class="product-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">{{ item.object.price|toman }} {% trans '$' %}</span>
+                                                                <span class="money">{{ item.object.price|number_farsi|toman }} {% trans '$' %}</span>
                                                             </span>
                                                     </td>
                                                     <td class="product-quantity">
@@ -75,9 +77,10 @@
                                                                     type="submit">{% trans 'Update' %}</button>
                                                         </form>
                                                     </td>
+                                                    <!-- item price -->
                                                     <td class="product-total-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">{{ item.item_price|toman }} {% translate '$' %}</span>
+                                                                <span class="money">{{ item.item_price|number_farsi|toman }} {% translate '$' %}</span>
 {#                                                                <span class="money">{{ item.object|get_item_price:item.quantity|toman }} {% translate '$' %}</span>#}
                                                             </span>
                                                     </td>
@@ -93,31 +96,28 @@
                             </div>
                         </div>
                         <div class="row no-gutters border-top pt--20 mt--20">
-                            {#                                    <div class="col-sm-6 text-sm-right">#}
-                            {#                                        <button type="submit" class="cart-form__btn">{% trans 'Empty Cart' %}</button>#}
-                            {#                                    </div>#}
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="cart-collaterals">
                             <div class="cart-totals">
-                                <h5 class="font-size-14 font-bold mb--15">مجموع</h5>
+                                <h5 class="font-size-14 font-bold mb--15">{% trans 'Total' %}</h5>
                                 <div class="cart-calculator">
                                     <div class="cart-calculator__item">
                                         <div class="cart-calculator__item--head">
-                                            <span>مجموع</span>
+                                            <span>{% trans 'Total' %}</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
-                                            <span>{{ cart.get_total_price|toman }} {% translate '$' %}</span>
+                                            <span>{{ cart.get_total_price|number_farsi|toman }} {% translate '$' %}</span>
                                         </div>
                                     </div>
                                     <div class="cart-calculator__item order-total">
                                         <div class="cart-calculator__item--head">
-                                            <span>جمع کل</span>
+                                            <span>{% trans 'Total' %}</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
                                                 <span class="product-price-wrapper">
-                                                    <span class="money">۳۴۶,۰۰۰ تومان</span>
+                                                    <span class="money">{{ cart.get_total_price|number_farsi|toman }} {% trans '$' %}</span>
                                                 </span>
                                         </div>
                                     </div>

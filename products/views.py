@@ -51,6 +51,7 @@ class ProductDetailView(generic.DetailView):
 class CommentCreateView(SuccessMessageMixin, generic.CreateView):
     model = Comment
     success_message = _('Comment Added successfully')
+    http_method_names = ['post', ]
 
     def get_form_class(self):
         return AuthenticatedCommentForm if self.request.user.is_authenticated else AnonymousCommentForm

@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class Product(models.Model):
@@ -15,7 +16,7 @@ class Product(models.Model):
     active = models.BooleanField(default=True, verbose_name=_('Is Active?'), )
     # category = models.CharField(choices=CATEGORIES, null=False, blank=True, max_length=2)
     # storage = models.PositiveIntegerField()
-    datetime_created = models.DateTimeField(auto_now_add=True)
+    datetime_created = models.DateTimeField(_('Date Time'),default=timezone.now())
     datetime_modified = models.DateTimeField(auto_now=True)
     cover = models.ImageField(upload_to='product/covers/', blank=True, verbose_name=_('Product Cover'))
 

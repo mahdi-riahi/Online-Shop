@@ -23,16 +23,3 @@ def capitalize_sentences(value):
             capitalize_next = True
 
     return ''.join(result)
-
-
-def toman_price(value):
-    digits = str(value)
-    reversed_digits = digits[::-1]
-
-    chunks = [reversed_digits[i:i + 3] for i in range(0, len(reversed_digits), 3)]
-    result = ','.join(chunks)[::-1]
-
-    return result
-
-
-register.filter('toman', toman_price)

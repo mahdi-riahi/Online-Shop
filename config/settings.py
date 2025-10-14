@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
+import locale
 import os
-from django.contrib.messages import constants as messages
+import sys
+from pathlib import Path
 
+from django.contrib.messages import constants as messages
 from environs import Env
 
 # for environment variables
@@ -42,8 +44,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # humanize
+    'django.contrib.humanize',
 
     # third party apps
+    'jalali_date',
     'crispy_bootstrap5',
     'crispy_forms',
     'allauth',
@@ -55,6 +60,7 @@ INSTALLED_APPS = [
     "pages",
     "products.apps.ProductsConfig",  # or "products",
     "cart.apps.CartConfig",
+    "jalali.apps.JalaliConfig",
 ]
 
 MIDDLEWARE = [

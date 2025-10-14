@@ -1,10 +1,17 @@
 {% extends '_base.html' %}
+
 {% load product_tags %}
 {% load comment_tags %}
+{% load farsi_tags %}
+
 {% load static %}
-{% load crispy_forms_tags %}
 {% load i18n %}
+{% load jalali_tags %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
 {% block title %}محصول {{ product.title|title }}{% endblock %}
+
 {% block content %}
 
     {% trans 'Details for ' as pre_header %}
@@ -15,6 +22,8 @@
     <!-- Main Content Wrapper Start -->
     <div class="main-content-wrapper">
         <div class="page-content-inner ptb--80">
+
+            <!-- Product Intro -->
             <div class="container">
                 <div class="row no-gutters mb--80">
                     <div class="col-12 col-sm-4 product-main-image d-flex align-content-center">
@@ -29,9 +38,10 @@
                                 {{ product.description|truncatewords:40 }}
                             </p>
                             <div class="my-5 py-5 product-price-wrapper mb--25">
-                                <span class="money text-success">{{ product.price|toman }} {% translate '$' %}</span>
+                                                                    <!-- Two ways to add comma to the number -->
+                                <span class="money text-success">{{ product.price|intcomma:False|number_farsi }} {% translate '$' %}</span>
                                 <span class="price-separator">-</span>
-                                <span class="money old-price text-danger">{{ product.price|toman }} {% trans '$' %}</span>
+                                <span class="money old-price text-danger">{{ product.price|number_farsi|toman }} {% trans '$' %}</span>
                             </div>
                             <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
                                 <form action="{% url 'cart:cart_add' product.pk %}" method="POST">
@@ -58,6 +68,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="product-data-tab tab-style-3">
@@ -78,6 +89,8 @@
                         <div class="tab-content product-data-tab__content" id="product-tabContent">
                             <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
                                  aria-labelledby="nav-description-tab">
+
+                                <!-- Product description -->
                                 <div class="product-description text-justify">
                                     <p>{{ product.description|linebreaksbr }}</p>
                                 </div>
@@ -114,8 +127,10 @@
                                     <h3 class="review__title">{{ product.comments.all|active_comments|length }}
                                         {% trans 'Comments for' %} {{ product.title|truncatewords:2 }}
                                     </h3>
+
+                                    <!-- Show comments -->
                                     <ul class="review__list">
-                                        {% for comment in product.comments.all|active_comments %}
+                                        {% for comment in product.comments.all|active_comments|order_by_datetime_comments %}
                                             <li class="review__item">
                                                 <div class="review__container">
                                                     <div class="review__text">
@@ -123,13 +138,12 @@
                                                             <img src="{% static 'assets/img/others/comment-1.jpg' %}"
                                                                  alt="avatar" class="review__avatar p-1 pt-7 mt-5">
                                                             <div>
-                                                                <div class="review__meta">
-                                                                    <strong class="review__author px-4"
-                                                                            style="float: left">
+                                                                <div class="review__meta" dir="ltr">
+                                                                    <strong class="review__author px-4">
                                                                         {{ comment.author }}
                                                                     </strong>
-                                                                    <span class="review__published-date"
-                                                                          style="text-align: right">{{ comment.datetime_modified }}</span>
+                                                                    <span class="review__published-date">
+                                                                        {{ comment.datetime_modified|to_jalali:'%Y %B %d'|number_farsi  }}</span>
                                                                 </div>
                                                                 <div class="pr-2 mr-1">
                                                                     <p style="font-size: 11pt">{{ comment.get_stars_display }}</p>
@@ -157,6 +171,8 @@
                                             </li>
                                         {% endfor %}
                                     </ul>
+
+                                    <!-- Comment Form -->
                                     <div class="review-form-wrapper">
                                         <div class="row">
                                             <div class="col-lg-8 m-auto">
@@ -186,6 +202,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -193,7 +210,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!-- Main Content Wrapper End -->
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-06 21:46+0330\n"
+"POT-Creation-Date: 2025-10-13 20:00+0330\n"
 "PO-Revision-Date: 2025-10-10 15:07+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,127 +19,133 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\models.py:12
+#: .\products\models.py:12
 msgid "Title"
 msgstr "عنوان محصول"
 
-#: .\models.py:13
+#: .\products\models.py:13
 msgid "Description"
 msgstr "توضیحات محصول"
 
-#: .\models.py:14
+#: .\products\models.py:14
 msgid "Price"
 msgstr "بهای محصول"
 
-#: .\models.py:15
+#: .\products\models.py:15
 msgid "Is Active?"
 msgstr "آیا این محصول فعال است؟"
 
-#: .\models.py:36
+#: .\products\models.py:20
+#, fuzzy
+#| msgid "Product description"
+msgid "Product Cover"
+msgstr "توضیحات محصول"
+
+#: .\products\models.py:36
 msgid "Very Bad"
 msgstr "بی کیفیت"
 
-#: .\models.py:37
+#: .\products\models.py:37
 msgid "Bad"
 msgstr "بد"
 
-#: .\models.py:38
+#: .\products\models.py:38
 msgid "Average"
 msgstr "متوسط"
 
-#: .\models.py:39
+#: .\products\models.py:39
 msgid "Good"
 msgstr "خوب"
 
-#: .\models.py:40
+#: .\products\models.py:40
 msgid "Perfect"
 msgstr "عالی"
 
-#: .\models.py:43
+#: .\products\models.py:43
 msgid "I recommend this product"
 msgstr "این محصول را پیشنهاد می کنم"
 
-#: .\models.py:44
+#: .\products\models.py:44
 msgid "I do not recommend this product"
 msgstr "این محصول را پیشنهاد نمی کنم"
 
-#: .\models.py:46
+#: .\products\models.py:46
 msgid "Your comment text"
 msgstr "متن دیدگاه شما"
 
-#: .\models.py:47
+#: .\products\models.py:47
 msgid "Your name"
 msgstr "نام شما"
 
-#: .\models.py:48
+#: .\products\models.py:48
 msgid "Email"
 msgstr "ایمیل"
 
-#: .\models.py:50
+#: .\products\models.py:50
 msgid "Score"
 msgstr "امتیاز"
 
-#: .\models.py:54
+#: .\products\models.py:54
 msgid "Do you suggest it to the others?"
 msgstr "آیا به دیگران پیشنهاد می دهید؟"
 
-#: .\templates\products\product_detail.html:16
+#: .\products\templates\products\product_detail.html:14
 msgid "Details for "
 msgstr "جزییات محصول "
 
-#: .\templates\products\product_detail.html:41
-#: .\templates\products\product_detail.html:43
+#: .\products\templates\products\product_detail.html:36
+#: .\products\templates\products\product_detail.html:38
 msgid "$"
 msgstr "تومان"
 
-#: .\templates\products\product_detail.html:54
+#: .\products\templates\products\product_detail.html:50
 msgid "Add to Cart"
 msgstr "اضافه کردن به سبد خرید"
 
-#: .\templates\products\product_detail.html:58
+#: .\products\templates\products\product_detail.html:55
 msgid "Categories"
 msgstr "دسته بندی ها"
 
-#: .\templates\products\product_detail.html:74
+#: .\products\templates\products\product_detail.html:71
 msgid "Product description"
 msgstr "توضیحات محصول"
 
-#: .\templates\products\product_detail.html:82
+#: .\products\templates\products\product_detail.html:79
 msgid "Comments"
 msgstr "نظرات"
 
-#: .\templates\products\product_detail.html:122
+#: .\products\templates\products\product_detail.html:119
 msgid "Comments for"
 msgstr "نظر برای"
 
-#: .\templates\products\product_detail.html:165
+#: .\products\templates\products\product_detail.html:166
 msgid "Write your own comment"
 msgstr "نظر خود را بنویسید"
 
-#: .\templates\products\product_detail.html:172
+#: .\products\templates\products\product_detail.html:174
 msgid "Your email will not be shown to others"
 msgstr "ایمیل شما به دیگران نشان داده نمی شود"
 
-#: .\templates\products\product_detail.html:179
+#: .\products\templates\products\product_detail.html:183
 msgid "Submit"
 msgstr "ارسال"
 
-#: .\views.py:54
+#: .\products\views.py:53
 msgid "Comment Added successfully"
 msgstr "دیدگاه شما با موفقیت اضافه شد!"
 
-#: .\views.py:75
+#: .\products\views.py:74
 msgid "This is a success message"
 msgstr "این یک پیام موفقیت آمیز است"
 
-#: .\views.py:76
+#: .\products\views.py:75
 msgid "This is an error message"
 msgstr "این یک پیام خطا است"
 
-#: .\views.py:77
+#: .\products\views.py:76
 msgid "Info"
 msgstr "اطلاع"
 
-#: .\views.py:78
+#: .\products\views.py:77
 msgid "Warning"
 msgstr "هشدار"

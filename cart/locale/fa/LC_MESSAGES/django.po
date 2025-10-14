@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-11 12:54+0330\n"
+"POT-Creation-Date: 2025-10-13 20:00+0330\n"
 "PO-Revision-Date: 2025-10-11 12:55+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,40 +19,41 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\cart.py:30
+#: .\cart\cart.py:30
 msgid "Product quantity updated"
 msgstr "تعداد اقلام محصول بروز شد"
 
-#: .\cart.py:33
+#: .\cart\cart.py:33
 msgid "Product added to cart successfully"
 msgstr "محصول با موفقیت به سبد خرید اضافه شد"
 
-#: .\cart.py:55
+#: .\cart\cart.py:55
 msgid "Product removed from cart"
 msgstr "محصول از سبد خریدتان حذف شد"
 
-#: .\templates\cart\cart_detail.html:8
+#: .\cart\templates\cart\cart_detail.html:8
 msgid "Cart Detail"
 msgstr "سبد خرید"
 
-#: .\templates\cart\cart_detail.html:18
+#: .\cart\templates\cart\cart_detail.html:12
 msgid "Your Cart"
 msgstr "سبد خرید شما"
 
-#: .\templates\cart\cart_detail.html:69 .\templates\cart\cart_detail.html:85
-#: .\templates\cart\cart_detail.html:116
+#: .\cart\templates\cart\cart_detail.html:60
+#: .\cart\templates\cart\cart_detail.html:80
+#: .\cart\templates\cart\cart_detail.html:111
 msgid "$"
 msgstr "تومان"
 
-#: .\templates\cart\cart_detail.html:80
+#: .\cart\templates\cart\cart_detail.html:75
 msgid "Update"
 msgstr "بروزرسانی"
 
-#: .\templates\cart\cart_detail.html:94
+#: .\cart\templates\cart\cart_detail.html:89
 msgid "Your cart is empty! Please add some products to the cart"
 msgstr "سبد خرید شما خالی است! لطفا تعدادی محصول به آن اضافه کنید"
 
-#: .\templates\cart\cart_detail.html:95
+#: .\cart\templates\cart\cart_detail.html:90
 msgid "Go Shopping"
 msgstr "برو به فروشگاه"
 

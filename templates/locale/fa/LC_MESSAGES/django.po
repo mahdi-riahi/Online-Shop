@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-11 15:22+0330\n"
+"POT-Creation-Date: 2025-10-13 20:00+0330\n"
 "PO-Revision-Date: 2025-10-11 15:26+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,109 +19,118 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\_base.html:108
+#: .\templates\_base.html:108
 msgid "Profile"
 msgstr "حساب کاربری"
 
-#: .\_base.html:111
+#: .\templates\_base.html:111
 msgid "Favorites"
 msgstr "علاقه مندی ها "
 
-#: .\_base.html:114
-msgid "Ordering History"
-msgstr "تاریخچه سفارشات"
-
-#: .\_base.html:117
+#: .\templates\_base.html:115
 msgid "Logout"
 msgstr "خروج از حساب کاربری"
 
-#: .\_base.html:121 .\account\login.html:6
+#: .\templates\_base.html:120 .\templates\account\login.html:6
 msgid "Login"
 msgstr "ورود"
 
-#: .\_base.html:124 .\account\signup.html:6
+#: .\templates\_base.html:124 .\templates\account\signup.html:6
 msgid "Signup"
 msgstr "ثبت نام"
 
-#: .\account\email\email_confirmation_message.txt:5
+#: .\templates\_base.html:229 .\templates\_base.html:237
+msgid "$"
+msgstr ""
+
+#: .\templates\_base.html:236
+msgid "Total"
+msgstr ""
+
+#: .\templates\_base.html:241
+msgid "Go to cart"
+msgstr ""
+
+#: .\templates\_base.html:243
+msgid "Checkout"
+msgstr ""
+
+#: .\templates\account\email\email_confirmation_message.txt:5
 #, python-format
 msgid ""
 "\n"
 "\n"
-"You're receiving this email because user %(user_display)s has given your email address to register an account on %(site_domain)s."
+"You're receiving this email because user %(user_display)s has given your "
+"email address to register an account on %(site_domain)s."
 msgstr ""
 
-#: .\account\email\email_confirmation_subject.txt:3
+#: .\templates\account\email\email_confirmation_subject.txt:3
 msgid "Please Confirm Your Email Address"
 msgstr ""
 
-#: .\account\email_confirm.html:7 .\account\email_confirm.html:11
+#: .\templates\account\email_confirm.html:7
+#: .\templates\account\email_confirm.html:11
 msgid "Confirm Email Address"
 msgstr ""
 
-#: .\account\email_confirm.html:17
+#: .\templates\account\email_confirm.html:17
 #, python-format
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an email "
 "address for user %(user_display)s."
 msgstr ""
 
-#: .\account\email_confirm.html:25
+#: .\templates\account\email_confirm.html:25
 msgid "Confirm"
 msgstr "تایید"
 
-#: .\account\email_confirm.html:31
+#: .\templates\account\email_confirm.html:31
 #, python-format
 msgid ""
 "Unable to confirm %(email)s because it is already confirmed by a different "
 "account."
 msgstr ""
 
-#: .\account\email_confirm.html:37
+#: .\templates\account\email_confirm.html:37
 #, python-format
 msgid ""
 "This email confirmation link expired or is invalid. Please <a "
 "href=\"%(email_url)s\">issue a new email confirmation request</a>."
 msgstr ""
 
-#: .\account\login.html:9
+#: .\templates\account\login.html:9
 msgid "Login Form"
 msgstr "فرم ورود"
 
-#: .\account\login.html:13
+#: .\templates\account\login.html:13
 msgid "login"
 msgstr "ورود"
 
-#: .\account\logout.html:4
+#: .\templates\account\logout.html:4
 msgid "Logout Page"
 msgstr "صفحه خروج"
 
-#: .\account\logout.html:11
+#: .\templates\account\logout.html:11
 msgid "Are you sure you want to signout?"
 msgstr "آیا مطمینید میخواهید خارج شوید؟"
 
-#: .\account\logout.html:12
+#: .\templates\account\logout.html:12
 msgid "No, Back to product list"
 msgstr "خیر، برگرد به لیست محصولات"
 
-#: .\account\logout.html:14
+#: .\templates\account\logout.html:14
 msgid "Yes, Logout"
 msgstr "بله، خارج شو"
 
-#: .\account\signup.html:10
+#: .\templates\account\signup.html:10
 msgid "Signup Form"
 msgstr "فرم ثبت نام"
 
-#: .\account\signup.html:14
+#: .\templates\account\signup.html:14
 msgid "signup"
 msgstr "ثبت نام"
 
-#: .\home_page.html:7
-#| msgid ""
-#| "\n"
-#| "        <h1>This is home page. </h1>\n"
-#| "        <h4>Welcome</h4>\n"
-#| "    "
+#: .\templates\home_page.html:7
 msgid ""
 "\n"
 "                <h1>This is home page. </h1>\n"
@@ -131,3 +140,6 @@ msgstr ""
 "\n"
 "<h1> اینجا خانه است! </h1>\n"
 "خوش آمدید"
+
+#~ msgid "Ordering History"
+#~ msgstr "تاریخچه سفارشات"
