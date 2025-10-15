@@ -19,7 +19,7 @@ class Product(models.Model):
     active = models.BooleanField(default=True, verbose_name=_('Is Active?'), )
     # category = models.CharField(choices=CATEGORIES, null=False, blank=True, max_length=2)
     # storage = models.PositiveIntegerField()
-    datetime_created = models.DateTimeField(_('Date Time'),default=timezone.now())
+    datetime_created = models.DateTimeField(_('Date Time'), auto_now_add=True)  # default=timezone.now())
     datetime_modified = models.DateTimeField(auto_now=True)
     cover = models.ImageField(upload_to='product/covers/', blank=True, verbose_name=_('Product Cover'))
 
