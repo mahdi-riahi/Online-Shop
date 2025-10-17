@@ -1,0 +1,91 @@
+{% load i18n %}
+{% load static %}
+{% load humanize %}
+{% load jalali_tags %}
+
+{% load order_tags %}
+{% load farsi_tags %}
+
+<div class="tab-pane fade {% if show_active %}show active{% endif %}" id="nav-{{ type }}" role="tabpanel"
+     aria-labelledby="nav-{{ type }}-tab">
+    <div class="product-reviews container-fluid">
+
+        <h3 class="review__title">
+            {{ title }}
+        </h3>
+
+        {% filter_by_status orders 1st 2nd 3rd as filtered_orders %}
+
+        {% for order in filtered_orders %}
+            <ul class="review__list">
+                <li class="review__item">
+                    <div class="review__container" style="width: 900pt">
+                        <div class="review__text">
+                            <a href="{{ order.get_absolute_url }}">
+                                <div class="d-flex flex-sm-row flex-row">
+                                    {% if order.is_paid %}
+                                        <p style="color: #3bd319">
+                                            ✅ {% trans 'Paid' %}
+                                        </p>
+                                    {% else %}
+                                        <p style="color: #2abfcc">
+                                            {% trans 'Not paid' %}
+                                        </p>
+                                    {% endif %}
+                                    <p class="review__description text-right px-4">
+                                        <strong class="review__author px-4">
+                                            {% trans 'Order-id' %}: {{ order.id|number_farsi }}
+                                        </strong>
+                                    </p>
+                                    <p class="review__description text-right px-4">
+                                        {{ order.get_total_price|intcomma:False|number_farsi }} {% trans '$' %}
+                                    </p>
+                                    <span>    </span>
+                                    <p>
+                                    <p style="font-size: 11pt; font-style: italic">  {% trans 'Order Status' %}: {{ order.get_status_display }}</p>
+                                </div>
+                                <div class="d-flex flex-sm-row flex-row mr-4" dir="rtl">
+                                    <p class="review__published-date">
+                                        <p>
+                                        <span class="review__published-date">
+                                            {% trans 'Order Registration Date' %}:
+                                        </span>
+                                        <span class="review__published-date">
+                                            {{ order.datetime_created|to_jalali:'%Y %B %d'|number_farsi }}
+                                        </span>
+                                        </p>
+                                    </p>
+                                </div>
+
+                                {#                                                    </p>#}
+                                {#                                                    <div>#}
+                                {#                                                        <div class="review__meta" dir="rtl">#}
+                                {#                                                            <strong class="review__author px-4">#}
+                                {#                                                                {% trans 'Order-id' %}: {{ order.id }}#}
+                                {#                                                            </strong>#}
+                                {#                                                        </div>#}
+                                {#                                                    </div>#}
+                                {#                                                    <div class="mr-8">#}
+                                {#                                                        <p class="review__description text-right px-4">#}
+                                {#                                                            {{ order.get_total_price|intcomma:False|number_farsi }} {% trans '$' %}#}
+                                {#                                                        </p>#}
+                                {#                                                    </div>#}
+                                {#                                                    <div class="pr-2 mr-1">#}
+                                {#                                                        <p style="font-size: 11pt">{% trans 'Order Status' %}: {{ order.get_status_display }}</p>#}
+                                {#                                                    </div>#}
+                                <div class="container">
+                                    {% for item in order.items.all %}
+                                        <img src="{{ item.product.cover.url }}" alt="product-cover" width="100px"
+                                             height="100px">
+                                    {% endfor %}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        {% empty %}
+        <h6>{% trans 'No orders found' %}</h6>
+        {% endfor %}
+    </div>
+</div>

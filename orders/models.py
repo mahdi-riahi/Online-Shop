@@ -8,7 +8,7 @@ from django.shortcuts import reverse
 class Order(models.Model):
     ORDER_STATUSES = (
         ('np', _('Not Paid')),
-        ('pr', _('Processing')),
+        ('pr', _('Preparing')),
         ('se', _('Sent')),
         ('de', _('Delivered')),
 
@@ -33,7 +33,7 @@ class Order(models.Model):
         return f'Order {self.id} for {self.user}'
 
     def get_absolute_url(self):
-        return reverse('orders/order_detail.html', args=[self.id])
+        return reverse('order:order_detail', args=[self.id])
 
     def get_total_price(self):
         return sum(item.price * item.quantity for item in self.items.all())

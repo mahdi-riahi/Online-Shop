@@ -16,6 +16,7 @@
         <div class="col-12">
             <div class="product-data-tab tab-style-3 mt-5" style="width: 500pt">
 
+                <!-- Nav-tabs -->
                 <div class="nav nav-tabs product-data-tab__head justify-content-center" id="product-tab" role="tablist">
                     <a class="m-0 product-data-tab__link nav-link active" id="nav-processing-tab"
                        data-toggle="tab" href="#nav-processing" role="tab" aria-selected="true">
@@ -35,208 +36,19 @@
                     </a>
                 </div>
 
+                <!-- Orders filtered by status -->
                 <div class="tab-content product-data-tab__content" id="product-tabContent">
-                    <div class="tab-pane fade" id="nav-processing" role="tabpanel"
-                         aria-labelledby="nav-processing-tab">
-                        <div class="product-reviews container-fluid">
 
-                            <h3 class="review__title">
-                                {% trans 'Processing Orders' %}
-                            </h3>
-                            {% filter_by_status orders 'np' 'pr' 'se' as filtered_orders %}
-                            {% for order in filtered_orders %}
-                                <ul class="review__list">
-                                    <li class="review__item">
-                                        <div class="review__container" style="width: 900pt">
-                                            <div class="review__text">
-                                                <div class="d-flex flex-sm-row flex-row">
-                                                    <p>
-                                                        {% if order.is_paid %}
-                                                        ✅ {% trans 'Paid' %}
-                                                            {% else %}
-                                                        ❌ {% trans 'Not paid' %}
-                                                        {% endif %}
-                                                    </p>
-                                                    <p class="review__description text-right px-4">
-                                                        <strong class="review__author px-4">
-                                                            {% trans 'Order-id' %}: {{ order.id|number_farsi }}
-                                                        </strong>
-                                                    </p>
-                                                    <p class="review__description text-right px-4">
-                                                        {{ order.get_total_price|intcomma:False|number_farsi }} {% trans '$' %}
-                                                    </p>
-                                                    <span>    </span>
-                                                    <p>
-                                                    <p style="font-size: 11pt; font-style: italic">  {% trans 'Order Status' %}: {{ order.get_status_display }}</p>
+                    {% trans 'Processing Orders' as title %}
+                    {% include 'orders/filtered_orders.html' with title=title orders=orders type='processing' show_active=True 1st='np' 2nd='pr' 3rd='se' %}
+                    {% trans 'Delivered Orders' as title %}
+                    {% include 'orders/filtered_orders.html' with title=title orders=orders type='delivered' 1st='de' %}
+                    {% trans 'Canceled Orders' as title %}
+                    {% include 'orders/filtered_orders.html' with title=title orders=orders type='canceled' 1st='ca' %}
+                    {% trans 'Returned Orders' as title %}
+                    {% include 'orders/filtered_orders.html' with title=title orders=orders type='returned' 1st='rt' %}
 
-{#                                                    </p>#}
-                                                    {#                                                    <div>#}
-                                                    {#                                                        <div class="review__meta" dir="rtl">#}
-                                                    {#                                                            <strong class="review__author px-4">#}
-                                                    {#                                                                {% trans 'Order-id' %}: {{ order.id }}#}
-                                                    {#                                                            </strong>#}
-                                                    {#                                                        </div>#}
-                                                    {#                                                    </div>#}
-                                                    {#                                                    <div class="mr-8">#}
-                                                    {#                                                        <p class="review__description text-right px-4">#}
-                                                    {#                                                            {{ order.get_total_price|intcomma:False|number_farsi }} {% trans '$' %}#}
-                                                    {#                                                        </p>#}
-                                                    {#                                                    </div>#}
-                                                    {#                                                    <div class="pr-2 mr-1">#}
-                                                    {#                                                        <p style="font-size: 11pt">{% trans 'Order Status' %}: {{ order.get_status_display }}</p>#}
-                                                    {#                                                    </div>#}
-                                                </div>
-                                                <div class="container">
-                                                    {% for item in order.items.all %}
-                                                        <img src="{{ item.product.cover.url }}" alt="" width="100px"
-                                                             height="100px">
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            {% endfor %}
-
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-delivered" role="tabpanel"
-                         aria-labelledby="nav-delivered-tab">
-                        <div class="product-reviews">
-
-                            <h3 class="review__title">
-                                {% trans 'Delivered Orders' %}
-                            </h3>
-                            {% filter_by_status orders 'de' as filtered_orders %}
-                            {% for order in filtered_orders %}
-                                <ul class="review__list">
-                                    <li class="review__item">
-                                        <div class="review__container">
-                                            <div class="review__text">
-                                                <div class="d-flex flex-sm-row flex-row">
-                                                    <img src="{% static 'assets/img/others/comment-1.jpg' %}"
-                                                         alt="avatar" class="review__avatar p-1 pt-7 mt-5">
-                                                    <div>
-                                                        <div class="review__meta" dir="ltr">
-                                                            <strong class="review__author px-4">
-                                                                {{ order }}
-                                                            </strong>
-                                                            <span class="review__published-date">
-                                                                        {{ order }}</span>
-                                                        </div>
-                                                        <div class="pr-2 mr-1">
-                                                            <p style="font-size: 11pt">{{ order }}</p>
-                                                        </div>
-                                                        <div class="product-rating">
-
-                                                            <div class="mr-3"><p
-                                                                    style="font-size: 11px">{{ order }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="review__description text-right px-4">
-                                                        {{ order }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                    </li>
-                                </ul>
-                            {% endfor %}
-
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-canceled" role="tabpanel"
-                         aria-labelledby="nav-canceled-tab">
-                        <div class="product-reviews">
-
-                            <h3 class="review__title">
-                                {% trans 'Canceled Orders' %}
-                            </h3>
-                            {% filter_by_status orders 'ca' as filtered_orders %}
-                            {% for order in filtered_orders %}
-                                <ul class="review__list">
-                                    <li class="review__item">
-                                        <div class="review__container">
-                                            <div class="review__text">
-                                                <div class="d-flex flex-sm-row flex-row">
-                                                    <img src="{% static 'assets/img/others/comment-1.jpg' %}"
-                                                         alt="avatar" class="review__avatar p-1 pt-7 mt-5">
-                                                    <div>
-                                                        <div class="review__meta" dir="ltr">
-                                                            <strong class="review__author px-4">
-                                                                {{ order }}
-                                                            </strong>
-                                                            <span class="review__published-date">
-                                                                        {{ order }}</span>
-                                                        </div>
-                                                        <div class="pr-2 mr-1">
-                                                            <p style="font-size: 11pt">{{ order }}</p>
-                                                        </div>
-                                                        <div class="product-rating">
-
-                                                            <div class="mr-3"><p
-                                                                    style="font-size: 11px">{{ order }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="review__description text-right px-4">
-                                                        {{ order }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                    </li>
-                                </ul>
-                            {% endfor %}
-
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-returned" role="tabpanel"
-                         aria-labelledby="nav-returned-tab">
-                        <div class="product-reviews">
-
-                            <h3 class="review__title">
-                                {% trans 'Returned Orders' %}
-                            </h3>
-                            {% filter_by_status orders 'rt' as filtered_orders %}
-                            {% for order in filtered_orders %}
-                                <ul class="review__list">
-                                    <li class="review__item">
-                                        <div class="review__container">
-                                            <div class="review__text">
-                                                <div class="d-flex flex-sm-row flex-row">
-                                                    <img src="{% static 'assets/img/others/comment-1.jpg' %}"
-                                                         alt="avatar" class="review__avatar p-1 pt-7 mt-5">
-                                                    <div>
-                                                        <div class="review__meta" dir="ltr">
-                                                            <strong class="review__author px-4">
-                                                                {{ order }}
-                                                            </strong>
-                                                            <span class="review__published-date">
-                                                                        {{ order }}</span>
-                                                        </div>
-                                                        <div class="pr-2 mr-1">
-                                                            <p style="font-size: 11pt">{{ order }}</p>
-                                                        </div>
-                                                        <div class="product-rating">
-
-                                                            <div class="mr-3"><p
-                                                                    style="font-size: 11px">{{ order }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="review__description text-right px-4">
-                                                        {{ order }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                    </li>
-                                </ul>
-                            {% endfor %}
-
-                        </div>
-                    </div>
                 </div>
-
             </div>
         </div>
     </div>
