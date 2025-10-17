@@ -144,6 +144,7 @@
     </header>
     <!-- Header End -->
 
+    <!-- Messages Start -->
     <div class="container header">
         {% if messages %}
             {% for message in messages %}
@@ -153,6 +154,7 @@
             {% endfor %}
         {% endif %}
     </div>
+    <!-- Messages End -->
 
     {% block content %}
     {% endblock %}

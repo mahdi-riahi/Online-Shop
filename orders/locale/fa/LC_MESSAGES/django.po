@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-15 17:36+0330\n"
-"PO-Revision-Date: 2025-10-15 17:40+0330\n"
+"POT-Creation-Date: 2025-10-17 17:16+0330\n"
+"PO-Revision-Date: 2025-10-17 17:17+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -21,80 +21,175 @@ msgstr ""
 
 #: .\models.py:10
 msgid "Not Paid"
-msgstr "پرداخت نشده"
+msgstr "در انتظار پرداخت"
 
-#: .\models.py:11
-msgid "Registered"
-msgstr "ثبت شده"
+#: .\models.py:11 .\templates\orders\order_list.html:22
+msgid "Processing"
+msgstr "در حال پردازش"
 
 #: .\models.py:12
-msgid "Posted"
-msgstr "ارسال شده"
+msgid "Sent"
+msgstr "در حال ارسال"
 
-#: .\models.py:13
+#: .\models.py:13 .\templates\orders\order_list.html:26
 msgid "Delivered"
 msgstr "تحویل شده"
 
-#: .\models.py:15
-msgid "Expired"
-msgstr "منقضی شده"
-
-#: .\models.py:16
+#: .\models.py:15 .\templates\orders\order_list.html:30
 msgid "Canceled"
 msgstr "لغو شده"
 
-#: .\models.py:17
+#: .\models.py:16 .\templates\orders\order_list.html:34
 msgid "Returned"
 msgstr "مرجوع شده"
 
-#: .\models.py:19
+#: .\models.py:18
 msgid "User"
 msgstr "کاربر"
 
-#: .\models.py:21
+#: .\models.py:20 .\templates\orders\order_list.html:70
 msgid "Order Status"
 msgstr "وضعیت سفارش"
 
-#: .\models.py:23
+#: .\models.py:22
 msgid "Phone Number(IR)"
 msgstr "شماره تماس (ایران)"
 
-#: .\models.py:24
+#: .\models.py:23
 msgid "First Name"
 msgstr "نام"
 
-#: .\models.py:25
+#: .\models.py:24
 msgid "Last Name"
 msgstr "نام خانوادگی"
 
-#: .\models.py:26
+#: .\models.py:25
 msgid "Full Address"
 msgstr "آدرس کامل"
 
-#: .\models.py:28
+#: .\models.py:27
 msgid "Extra Note"
 msgstr "یادداشت"
 
-#: .\models.py:30
+#: .\models.py:29
 msgid "Order Added At"
 msgstr "زمان ثبت سفارش"
 
-#: .\models.py:31
+#: .\models.py:30
 msgid "Order Updated At"
 msgstr "زمان بروزرسانی سفارش"
 
-#: .\models.py:41
+#: .\models.py:43
 msgid "Order"
 msgstr "سفارش"
 
-#: .\models.py:43
+#: .\models.py:45 .\templates\orders\order_create.html:84
 msgid "Product"
 msgstr "محصول"
 
-#: .\models.py:45
+#: .\models.py:47
 msgid "Price"
 msgstr "بها"
 
-#: .\models.py:46
+#: .\models.py:48
 msgid "Quantity"
 msgstr "تعداد"
+
+#: .\templates\orders\order_create.html:8
+#: .\templates\orders\order_create.html:12
+msgid "Order Registration"
+msgstr "ثبت سفارش"
+
+#: .\templates\orders\order_create.html:29
+msgid "Personal Information"
+msgstr "اطلاعات شخصی"
+
+#: .\templates\orders\order_create.html:35
+msgid "Submit"
+msgstr "ارسال"
+
+#: .\templates\orders\order_create.html:78
+msgid "Your Order"
+msgstr "سفارش شما"
+
+#: .\templates\orders\order_create.html:85
+msgid "Final Price"
+msgstr "قیمت نهایی"
+
+#: .\templates\orders\order_create.html:94
+#: .\templates\orders\order_create.html:101
+#: .\templates\orders\order_list.html:66
+msgid "$"
+msgstr "تومان"
+
+#: .\templates\orders\order_create.html:100
+msgid "Total"
+msgstr "مجموع"
+
+#: .\templates\orders\order_create.html:107
+msgid "Ways to checkout"
+msgstr "راه های پرداخت"
+
+#: .\templates\orders\order_create.html:112
+msgid "Zarin-Pal Payment"
+msgstr "درگاه پرداخت امن زرین پال"
+
+#: .\templates\orders\order_create.html:122
+msgid "Your cart is empty. You must add some products to your cart!"
+msgstr "سبد خرید شما خالی است. چند محصول به سبد خرید خود اضافه کنید"
+
+#: .\templates\orders\order_create.html:124
+msgid "Go Shopping"
+msgstr "برو به سبد خرید"
+
+#: .\templates\orders\order_detail.html:5
+#: .\templates\orders\order_detail.html:9
+msgid "Order Detail"
+msgstr "جزییات سفارش"
+
+#: .\templates\orders\order_list.html:11
+msgid "Orders List"
+msgstr "لیست سفارشات"
+
+#: .\templates\orders\order_list.html:44
+msgid "Processing Orders"
+msgstr "سفارش های در حال پردازش"
+
+#: .\templates\orders\order_list.html:55
+#| msgid "Not Paid"
+msgid "Paid"
+msgstr "پرداخت شده"
+
+#: .\templates\orders\order_list.html:57
+#| msgid "Not Paid"
+msgid "Not paid"
+msgstr "در انتظار پرداخت"
+
+#: .\templates\orders\order_list.html:62
+msgid "Order-id"
+msgstr "کد سفارش"
+
+#: .\templates\orders\order_list.html:108
+msgid "Delivered Orders"
+msgstr "سفارشات تحویل شده"
+
+#: .\templates\orders\order_list.html:153
+msgid "Canceled Orders"
+msgstr "سفارشات لغو شده"
+
+#: .\templates\orders\order_list.html:198
+msgid "Returned Orders"
+msgstr "سفارشات مرجوع شده"
+
+#: .\views.py:31
+msgid "Your Order has been registered"
+msgstr "سفارش شما ثبت شد"
+
+#~ msgid "Registered"
+#~ msgstr "ثبت شده"
+
+#~ msgid "Posted"
+#~ msgstr "ارسال شده"
+
+#~ msgid "Expired"
+#~ msgstr "منقضی شده"

@@ -8,11 +8,10 @@ from django.shortcuts import reverse
 class Order(models.Model):
     ORDER_STATUSES = (
         ('np', _('Not Paid')),
-        ('rg', _('Registered')),
-        ('po', _('Posted')),
+        ('pr', _('Processing')),
+        ('se', _('Sent')),
         ('de', _('Delivered')),
 
-        ('ex', _('Expired')),
         ('ca', _('Canceled')),
         ('rt', _('Returned')),
     )
@@ -33,8 +32,11 @@ class Order(models.Model):
     def __str__(self):
         return f'Order {self.id} for {self.user}'
 
-    # def get_absolute_url(self):
-    #     return reverse('orders/order_detail.html')
+    def get_absolute_url(self):
+        return reverse('orders/order_detail.html', args=[self.id])
+
+    def get_total_price(self):
+        return sum(item.price * item.quantity for item in self.items.all())
 
 
 class OrderItem(models.Model):
