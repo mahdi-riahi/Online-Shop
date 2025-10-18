@@ -1,18 +1,138 @@
 {% extends '_base.html' %}
 
+{% load product_tags %}
+{% load farsi_tags %}
+{% load cart_tags %}
+
+{% load static %}
 {% load i18n %}
+{% load humanize %}
 
 {% block title %}{% trans 'Order Detail' %}{% endblock %}
 
 {% block content %}
 
-    {% trans 'Order Detail' as header %}
-    {% include 'cart/header.html' with header_name=header %}
+    {% trans 'Order Detail of' as pre_header %}
+    {% with order.id|number_farsi as header %}
+    {% include 'cart/header.html' with pre_header=pre_header header_name=header %}
+    {% endwith %}
 
-    <!-- Order Details -->
+    <!-- Main Content Wrapper Start -->
+    <div class="main-content-wrapper">
+        <div class="page-content-inner ptb--80">
+            <div class="container-fluid">
+                <div class="row no-gutters mb--80 justify-content-center">
+
+                    <!-- Order Items -->
+                    <div class="col-xl-6 col-sm-8 offset-xl-1 col-lg-7 mt-md--40">
+                        <div class="order-details">
+                            <div class="checkout-title mt--10">
+                                <h2>{% trans 'Order Items' %}</h2>
+                            </div>
+                            <div class="table-content table-responsive mb--30">
+                                <table class="table order-table order-table-2">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-right">{% trans 'Product' %}</th>
+                                        <th class="text-center">{% trans 'Quantity' %}</th>
+                                        <th class="text-right">{% trans 'Final Price' %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in order.items.all %}
+                                        <tr>
+                                            <th class="text-right">{{ item.product.title }}</th>
+                                            <td class="text-center">{{ item.quantity|number_farsi }}</td>
+                                            <td class="text-right col-4">{{ item.product.price|get_item_price_price_quantity:item.quantity|intcomma:False|number_farsi }} {% trans '$' %}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="cart-subtotal">
+                                        <th>{% trans 'Total' %}</th>
+                                        <td class="text-center">{{ order|length|number_farsi }}</td>
+                                        <td class="text-right col-4">{{ order.get_total_price|intcomma:False|number_farsi }} {% trans '$' %}</td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- User Information -->
+                    <div class="col-12 col-sm-5 product-main-details mt-md--50">
+                        <div class="product-summary pl-lg--30 pl-md--0 text-right p-4">
+                            <h1 class="">{% trans 'Your Information' %}</h1>
+
+                            <div class="my-5 py-5 product-price-wrapper mb--25">
+                                <span style="color: #0d70a5"><i>{% trans 'Full Name' %}</i></span>
+                                <p>{{ order.first_name }} {{ order.last_name }}</p>
+                            </div>
+                            <div class="my-5 py-5 product-price-wrapper mb--25">
+                                <span style="color: #0d70a5"><i>{% trans 'Phone Number' %}</i></span>
+                                <p style="color: #006b1b">{{ order.phone_number }}</p>
+                            </div>
+                            <div class="my-5 py-5 product-price-wrapper mb--25">
+                                <span style="color: #0d70a5"><i>{% trans 'Address' %}</i></span>
+                                <p>{{ order.address }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Payment Form / Comment Links -->
+                    <div class="col-12 col-sm-5 product-main-details mt-md--50">
+                        {% if order.is_paid %}
+
+                            <h1 class="py-5 text-center">{% trans 'Share your feelings about your shopping' %}</h1>
+                            <p class="review__description">{% trans 'Add comments about products you bought and help others to make better decisions' %}</p>
+
+                            <div class="container">
+                            {% for item in order.items.all %}
+                            <div class="card" style="width: 50%;height: 300pt ;float: right">
+                                <img src="{{ item.product.cover.url }}" class="card-img-top" height="200px">
+                                <div class="card-body">
+                                    <div class="text-center" style="height: 50%">
+                                    <h5 class="card-title">{{ item.product.title }}</h5>
+                                    </div>
+                                    <div class="text-center" style="height: 40%">
+                                    <a href="{% url 'product_detail' item.product.pk %}" class="btn-fullwidth">
+                                        <img src="{% static 'assets/img/comment.jpg' %}" width="50px" height="50px">
+                                        <p class="review-text">{% trans 'Add your comment' %}</p>
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            </div>
 
 
-    <!-- Order Date Form -->
+                        {% else %}
+                            <div class="order-details">
+                                <div class="checkout-payment">
+                                    <h1 class="py-5 text-center">{% trans 'Ways to checkout' %}</h1>
+                                    <div class="payment-group mb--10 text-center">
+                                        <form action="" method="POST">
+                                            {% csrf_token %}
+                                            <div class="payment-radio py-5">
+                                                <input type="radio" value="bank" name="payment-method" id="bank"
+                                                       checked>
+                                                <label class="payment-label"
+                                                       for="cheque">{% trans 'Zarin-Pal Payment' %}</label>
+                                            </div>
+                                            <button class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
+                                                    type="submit">{% trans 'Checkout' %}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
 
-
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Wrapper End -->
 {% endblock %}

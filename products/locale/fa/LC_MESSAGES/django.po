@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-14 20:31+0330\n"
+"POT-Creation-Date: 2025-10-18 18:18+0330\n"
 "PO-Revision-Date: 2025-10-14 20:32+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,83 +19,83 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\models.py:15
+#: .\models.py:12
 msgid "Title"
 msgstr "عنوان محصول"
 
-#: .\models.py:16
+#: .\models.py:13
 #, fuzzy
 #| msgid "Description"
 msgid "Short Description"
 msgstr "توضیحات محصول"
 
-#: .\models.py:17
+#: .\models.py:14
 msgid "Description"
 msgstr "توضیحات محصول"
 
-#: .\models.py:18
+#: .\models.py:15
 msgid "Price"
 msgstr "بهای محصول"
 
-#: .\models.py:19
+#: .\models.py:16
 msgid "Is Active?"
 msgstr "آیا این محصول فعال است؟"
 
-#: .\models.py:22
+#: .\models.py:19
 msgid "Date Time"
 msgstr "تاریخ ایجاد"
 
-#: .\models.py:24
+#: .\models.py:21
 #, fuzzy
 #| msgid "Product description"
 msgid "Product Cover"
 msgstr "توضیحات محصول"
 
-#: .\models.py:40
+#: .\models.py:37
 msgid "Very Bad"
 msgstr "بی کیفیت"
 
-#: .\models.py:41
+#: .\models.py:38
 msgid "Bad"
 msgstr "بد"
 
-#: .\models.py:42
+#: .\models.py:39
 msgid "Average"
 msgstr "متوسط"
 
-#: .\models.py:43
+#: .\models.py:40
 msgid "Good"
 msgstr "خوب"
 
-#: .\models.py:44
+#: .\models.py:41
 msgid "Perfect"
 msgstr "عالی"
 
-#: .\models.py:47
+#: .\models.py:44
 msgid "I recommend this product"
 msgstr "این محصول را پیشنهاد می کنم"
 
-#: .\models.py:48
+#: .\models.py:45
 msgid "I do not recommend this product"
 msgstr "این محصول را پیشنهاد نمی کنم"
 
-#: .\models.py:50
+#: .\models.py:47
 msgid "Your comment text"
 msgstr "متن دیدگاه شما"
 
-#: .\models.py:51
+#: .\models.py:48
 msgid "Your name"
 msgstr "نام شما"
 
-#: .\models.py:52
+#: .\models.py:49
 msgid "Email"
 msgstr "ایمیل"
 
-#: .\models.py:54
+#: .\models.py:51
 msgid "Score"
 msgstr "امتیاز"
 
-#: .\models.py:58
+#: .\models.py:55
 msgid "Do you suggest it to the others?"
 msgstr "آیا به دیگران پیشنهاد می دهید؟"
 

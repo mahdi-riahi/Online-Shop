@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 21:20+0330\n"
-"PO-Revision-Date: 2025-10-17 21:20+0330\n"
+"POT-Creation-Date: 2025-10-18 18:12+0330\n"
+"PO-Revision-Date: 2025-10-18 18:16+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\models.py:10
+#: .\models.py:11
 msgid "Not Paid"
 msgstr "در انتظار پرداخت"
 
-#: .\models.py:11
+#: .\models.py:12
 msgid "Preparing"
 msgstr "در حال آماده سازی"
 
-#: .\models.py:12
+#: .\models.py:13
 msgid "Sent"
 msgstr "در حال ارسال"
 
-#: .\models.py:13 .\templates\orders\order_list.html:27
+#: .\models.py:14 .\templates\orders\order_list.html:27
 msgid "Delivered"
 msgstr "تحویل شده"
 
@@ -43,55 +43,61 @@ msgstr "لغو شده"
 msgid "Returned"
 msgstr "مرجوع شده"
 
-#: .\models.py:18
+#: .\models.py:24
 msgid "User"
 msgstr "کاربر"
 
-#: .\models.py:20 .\templates\orders\filtered_orders.html:45
+#: .\models.py:27 .\templates\orders\filtered_orders.html:45
 msgid "Order Status"
 msgstr "وضعیت سفارش"
 
-#: .\models.py:22
+#: .\models.py:29
 msgid "Phone Number(IR)"
 msgstr "شماره تماس (ایران)"
 
-#: .\models.py:23
+#: .\models.py:30
 msgid "First Name"
 msgstr "نام"
 
-#: .\models.py:24
+#: .\models.py:31
 msgid "Last Name"
 msgstr "نام خانوادگی"
 
-#: .\models.py:25
+#: .\models.py:32
 msgid "Full Address"
 msgstr "آدرس کامل"
 
-#: .\models.py:27
+#: .\models.py:34
 msgid "Extra Note"
 msgstr "یادداشت"
 
-#: .\models.py:29
+#: .\models.py:36
 msgid "Order Added At"
 msgstr "زمان ثبت سفارش"
 
-#: .\models.py:30
+#: .\models.py:37
 msgid "Order Updated At"
 msgstr "زمان بروزرسانی سفارش"
 
-#: .\models.py:43
+#: .\models.py:39
+msgid "Choose Receive Date"
+msgstr "تاریخ دریافت را انتخاب کنید"
+
+#: .\models.py:55
 msgid "Order"
 msgstr "سفارش"
 
-#: .\models.py:45 .\templates\orders\order_create.html:84
+#: .\models.py:57 .\templates\orders\order_create.html:84
+#: .\templates\orders\order_detail.html:36
 msgid "Product"
 msgstr "محصول"
 
-#: .\models.py:47
+#: .\models.py:59
 msgid "Price"
 msgstr "بها"
 
-#: .\models.py:48
+#: .\models.py:60 .\templates\orders\order_create.html:85
+#: .\templates\orders\order_detail.html:37
 msgid "Quantity"
 msgstr "تعداد"
 
@@ -109,14 +115,19 @@ msgstr "کد سفارش"
 
 #: .\templates\orders\filtered_orders.html:41
 #: .\templates\orders\order_create.html:94
-#: .\templates\orders\order_create.html:101
+#: .\templates\orders\order_create.html:102
+#: .\templates\orders\order_detail.html:46
+#: .\templates\orders\order_detail.html:54
 msgid "$"
 msgstr "تومان"
 
-#: .\templates\orders\filtered_orders.html:48
-#| msgid "Order Registration"
+#: .\templates\orders\filtered_orders.html:51
 msgid "Order Registration Date"
 msgstr "تاریخ ثبت سفارش"
+
+#: .\templates\orders\filtered_orders.html:88
+msgid "No orders found"
+msgstr "هیچ سفارشی یافت نشد"
 
 #: .\templates\orders\order_create.html:8
 #: .\templates\orders\order_create.html:12
@@ -135,34 +146,85 @@ msgstr "ارسال"
 msgid "Your Order"
 msgstr "سفارش شما"
 
-#: .\templates\orders\order_create.html:85
+#: .\templates\orders\order_create.html:86
+#: .\templates\orders\order_detail.html:38
 msgid "Final Price"
 msgstr "قیمت نهایی"
 
 #: .\templates\orders\order_create.html:100
+#: .\templates\orders\order_detail.html:52
 msgid "Total"
 msgstr "مجموع"
 
-#: .\templates\orders\order_create.html:107
-msgid "Ways to checkout"
-msgstr "راه های پرداخت"
-
-#: .\templates\orders\order_create.html:112
-msgid "Zarin-Pal Payment"
-msgstr "درگاه پرداخت امن زرین پال"
-
-#: .\templates\orders\order_create.html:122
+#: .\templates\orders\order_create.html:125
 msgid "Your cart is empty. You must add some products to your cart!"
 msgstr "سبد خرید شما خالی است. چند محصول به سبد خرید خود اضافه کنید"
 
-#: .\templates\orders\order_create.html:124
+#: .\templates\orders\order_create.html:128
 msgid "Go Shopping"
 msgstr "برو به سبد خرید"
 
-#: .\templates\orders\order_detail.html:5
-#: .\templates\orders\order_detail.html:9
+#: .\templates\orders\order_detail.html:11
 msgid "Order Detail"
 msgstr "جزییات سفارش"
+
+#: .\templates\orders\order_detail.html:15
+#| msgid "Order Detail"
+msgid "Order Detail of"
+msgstr "جزییات سفارش شماره"
+
+#: .\templates\orders\order_detail.html:30
+#| msgid "Order Status"
+msgid "Order Items"
+msgstr "اقلام سفارش"
+
+#: .\templates\orders\order_detail.html:66
+#| msgid "Personal Information"
+msgid "Your Information"
+msgstr "اطلاعات شما"
+
+#: .\templates\orders\order_detail.html:69
+#| msgid "First Name"
+msgid "Full Name"
+msgstr "نام"
+
+#: .\templates\orders\order_detail.html:73
+#| msgid "Phone Number(IR)"
+msgid "Phone Number"
+msgstr "شماره تماس (ایران)"
+
+#: .\templates\orders\order_detail.html:77
+#| msgid "Full Address"
+msgid "Address"
+msgstr "آدرس "
+
+#: .\templates\orders\order_detail.html:88
+msgid "Share your feelings about your shopping"
+msgstr "حس خود را درباره خرید تان به اشتراک بگذارید"
+
+#: .\templates\orders\order_detail.html:89
+msgid ""
+"Add comments about products you bought and help others to make better "
+"decisions"
+msgstr ""
+"درباره محصولی که خریدید دیدگاه خود را بنویسید تا دیگران بتوانند برای خرید "
+"بهتر تصمیم بگیرند"
+
+#: .\templates\orders\order_detail.html:102
+msgid "Add your comment"
+msgstr "دیدگاه اضافه کنید"
+
+#: .\templates\orders\order_detail.html:114
+msgid "Ways to checkout"
+msgstr "راه های پرداخت"
+
+#: .\templates\orders\order_detail.html:122
+msgid "Zarin-Pal Payment"
+msgstr "درگاه پرداخت امن زرین پال"
+
+#: .\templates\orders\order_detail.html:125
+msgid "Checkout"
+msgstr "پرداخت"
 
 #: .\templates\orders\order_list.html:11
 msgid "Orders List"
@@ -172,19 +234,19 @@ msgstr "لیست سفارشات"
 msgid "Processing"
 msgstr "در حال پردازش"
 
-#: .\templates\orders\order_list.html:41
+#: .\templates\orders\order_list.html:42
 msgid "Processing Orders"
 msgstr "سفارش های در حال پردازش"
 
-#: .\templates\orders\order_list.html:43
+#: .\templates\orders\order_list.html:44
 msgid "Delivered Orders"
 msgstr "سفارشات تحویل شده"
 
-#: .\templates\orders\order_list.html:45
+#: .\templates\orders\order_list.html:46
 msgid "Canceled Orders"
 msgstr "سفارشات لغو شده"
 
-#: .\templates\orders\order_list.html:47
+#: .\templates\orders\order_list.html:48
 msgid "Returned Orders"
 msgstr "سفارشات مرجوع شده"
 

@@ -31,6 +31,15 @@ def order_create_view(request):
         messages.success(request, _('Your Order has been registered'))
         return redirect('order:order_detail', pk=order.id)
 
+    if request.user.orders:
+        order = request.user.orders.last()
+        form = OrderForm(initial={
+            'first_name': order.first_name,
+            'last_name': order.last_name,
+            'phone_number': order.phone_number,
+            'address': order.address,
+        })
+
     return render(request, 'orders/order_create.html', {'form': form})
 
 
